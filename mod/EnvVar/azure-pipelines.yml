@@ -1,0 +1,48 @@
+trigger:
+  tags:
+    include:
+      - v*
+  branches:
+    include:
+      - master
+
+pool:
+  vmImage: 'windows-latest'
+
+jobs:
+  - job: test
+    displayName: Unit tests
+    steps:
+      - powershell:
+          Install-Module Pester -Scope CurrentUser -Force
+        name: test_deps
+        displayName: Install tests' dependencies
+      - powershell: |
+          Invoke-Pester test/EnvVar.Tests.ps1
+        name: test_body
+        displayName: Run tests
+  - deployment: publish
+    displayName: Publish to PowerShell Gallery
+    dependsOn: [test]
+    condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
+    environment: PSGallery
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - powershell: |
+                Install-Module PowerShellGet -Scope CurrentUser -Force
+              name: deploy_deps
+              displayName: Install dependencies for deployment
+            - checkout: self
+            - powershell: |
+                New-Item EnvVar -ItemType Directory
+                Copy-Item test, EnvVar.psd1, EnvVar.psm1, LICENSE, README.md -Destination EnvVar -Recurse
+              name: deploy_prepare
+              displayName: Prepare files
+            - powershell: |
+                Publish-Module -Path EnvVar -NuGetApiKey $Env:NUGET_APIKEY
+              name: deploy_publish
+              displayName: Publish the module to PowerShell Gallery
+              env:
+                NUGET_APIKEY: $(nuget_api_secret)
