@@ -28,11 +28,14 @@ PS> Get-EnvironmentVariable path -Scope User
 ```
 
 ### Install EnvironmentVariableItems module
-```
-# install manually;
-Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 
-# test, eg.;
+Install manually;
+```
+Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
+```
+
+Test EnvironmentVariableItems, eg.;
+```
 PS> Import-Module EnvironmentVariableItems # (not strictly required)
 PS> Get-EnvironmentVariableItems path -Scope User
 ```
