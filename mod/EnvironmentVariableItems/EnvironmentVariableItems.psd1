@@ -1,5 +1,5 @@
 @{
-RootModule = 'A1_EnvironmentVariableItems.psm1'
+RootModule = 'EnvironmentVariableItems.psm1'
 ModuleVersion = '1.0.0'
 GUID = 'f5ed8644-7f61-49cb-b4e5-fe24e5e85262'
 Author = 'a1publishing\michaelf'
@@ -7,7 +7,7 @@ CompanyName = 'a1publishing.com'
 Copyright = '(c) a1publishing.com'
 Description = 'Handles environment variable item, eg., paths in $env:path'
 PowerShellVersion = '3.0'
-RequiredModules = @('A1_EnvVar')
+RequiredModules = @('EnvVar')
 # RequiredAssemblies = @()
 # ScriptsToProcess = @()
 # TypesToProcess = @()

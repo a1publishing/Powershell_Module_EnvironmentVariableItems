@@ -1,5 +1,33 @@
+<#
+.SYNOPSIS
+Adds an environment variable for given name, value and scope (default, 'process') and separator (';') and optional position.
+
+.EXAMPLE
+
+Insert 'C:\foo' as the last but one item in $env:Path variable
+
+PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Position -1 -WhatIf
+
+What if:
+    Current Value:
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+    New value:
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+
+.EXAMPLE
+
+Add 'cake' as last item of $env:foo
+
+PS> Add-EnvironmentVariableItem -Name foo -Value cake -Scope User -Separator '#' -whatif
+
+What if:
+    Current Value:
+        foo#bar#cup
+    New value:
+        foo#bar#cup#cake
+#>
 function Add-EnvironmentVariableItem {
-    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
     param (
         [Parameter(
             Mandatory,
@@ -40,6 +68,40 @@ function Add-EnvironmentVariableItem {
     }
 }
 
+<#
+.SYNOPSIS
+Gets an 'environment variable items' object for a given name, scope (default, 'process') and separator (';').
+
+.EXAMPLE
+
+Get $env:Path EnvironmentVariableItems object
+
+PS>Get-EnvironmentVariableItems -Name Path -Scope Machine
+
+Name      : Path
+Scope     : Machine
+Separator : ;
+Value     : C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH
+            \;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program
+            Files\PowerShell\7\;C:\Program Files\Git\cmd
+Items     : {C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem, C:\WINDOWS\System32\WindowsPowerShell\v1.0\…}
+
+.EXAMPLE
+Show index of items in $env:PSModulePath
+
+PS>(Get-EnvironmentVariableItems -Name Path -Scope Machine).ShowIndex()
+
+0: C:\WINDOWS\system32
+1: C:\WINDOWS
+2: C:\WINDOWS\System32\Wbem
+3: C:\WINDOWS\System32\WindowsPowerShell\v1.0\
+4: C:\WINDOWS\System32\OpenSSH\
+5: C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static
+6: C:\ProgramData\chocolatey\bin
+7: C:\Program Files\PowerShell\7\
+8: C:\Program Files\Git\cmd
+
+#>
 function Get-EnvironmentVariableItems {
     [CmdletBinding()]
     param (

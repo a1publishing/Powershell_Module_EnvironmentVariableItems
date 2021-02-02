@@ -1,6 +1,6 @@
 @{
 
-    RootModule        = 'A1_EnvVar.psm1'
+    RootModule        = 'EnvVar.psm1'
 
     ModuleVersion     = '0.1.0'
 
