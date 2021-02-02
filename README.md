@@ -1,4 +1,4 @@
-# A1_EnvironmentVariableItems
+# EnvironmentVariableItems
 
 ## Description
 Powershell module allowing handling of environment variable 'items'.  Primarily useful for, though not restricted to, path type variables, eg.; adding 'C:\foo' to $env:Path.
@@ -16,7 +16,7 @@ the Set-PSRepository cmdlet. Are you sure you want to install the modules from '
 
 ```
 
-or b) install manually
+or b) install manually;
 ```
 # install
 PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
@@ -28,7 +28,7 @@ PS> Get-EnvironmentVariable path -Scope User
 
 ### Install EnvironmentVariableItems module
 ```
-# install
+# install manually;
 Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 
 # test, eg.;
