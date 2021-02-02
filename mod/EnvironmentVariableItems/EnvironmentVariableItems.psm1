@@ -73,9 +73,6 @@ function Add-EnvironmentVariableItem {
 .SYNOPSIS
 Gets an EnvironmentVariableItems object for a given name, scope (default; 'process') and separator (';').
 
-.ALIAS
-gevis
-
 .EXAMPLE
 
 Get machine's $env:Path EnvironmentVariableItems object
@@ -290,7 +287,6 @@ PS> (Get-EnvironmentVariableItems -Name foo -Scope User -Separator '#').ShowInde
 
 PS> revi foo 1 -Scope User -Separator '#' -WhatIf
 
-What if:
 What if:
     Current Value:
         foo#cake#bar#cup
