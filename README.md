@@ -7,9 +7,9 @@ Powershell module allowing handling of environment variable 'items'.  Primarily 
 
 1. Install EnvVar, a required (third-party) module. Options include..
 
-    a) from PowershellGallery;
+        a) from PowershellGallery;
 
-```powershell
+```
 PS> Install-Module EnvVar -RequiredVersion 0.1.0
 Untrusted repository
 You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running
@@ -18,10 +18,10 @@ the Set-PSRepository cmdlet. Are you sure you want to install the modules from '
 
 ```
 
-    b) install it manually
+        b) install it manually
 
 
-```powershell
+```
 # install
 PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
 
