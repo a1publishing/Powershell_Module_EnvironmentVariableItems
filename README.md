@@ -41,7 +41,7 @@ PS> Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 Test EnvironmentVariableItems, eg.;
 ```
 PS> Import-Module EnvironmentVariableItems # (not strictly required)
-PS> Get-EnvironmentVariableItems path -Scope User
+PS> Get-EnvironmentVariableItems -Name PSModulePath -Scope User
 ```
 
 
