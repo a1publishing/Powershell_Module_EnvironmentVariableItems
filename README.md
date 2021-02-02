@@ -50,4 +50,4 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
 
 
-[MIT License (c) 2019 a1publishing](LICENSE)
+[MIT License (c) 2021 a1publishing.com] (LICENSE)
