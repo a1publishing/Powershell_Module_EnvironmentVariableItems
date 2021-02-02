@@ -15,9 +15,8 @@ the Set-PSRepository cmdlet. Are you sure you want to install the modules from '
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): y
 ```
 
-or b) install manually;
+or b) install manually, eg.;
 ```
-# install
 PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
 ```
 
@@ -29,9 +28,14 @@ PS> Get-EnvironmentVariable path -Scope User
 
 ### Install EnvironmentVariableItems module
 
-Install manually, eg., in user's $HOME Powershell Modules folder;
+a) from PowershellGallery;
 ```
-Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
+PS> Install-Module EnvironmentVariableItems
+```
+
+or b) install manually, eg.;
+```
+PS> Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 ```
 
 Test EnvironmentVariableItems, eg.;
