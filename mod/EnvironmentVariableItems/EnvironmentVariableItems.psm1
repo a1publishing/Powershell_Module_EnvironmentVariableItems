@@ -18,13 +18,14 @@ What if:
 
 Add 'cake' as last item of $env:foo
 
-PS> Add-EnvironmentVariableItem -Name foo -Value cake -Scope User -Separator '#' -whatif
+PS> aevi foo cake -Scope User -Separator '#' -whatif
 
 What if:
     Current Value:
         foo#bar#cup
     New value:
         foo#bar#cup#cake
+
 #>
 function Add-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
@@ -72,6 +73,9 @@ function Add-EnvironmentVariableItem {
 .SYNOPSIS
 Gets an EnvironmentVariableItems object for a given name, scope (default; 'process') and separator (';').
 
+.ALIAS
+gevis
+
 .EXAMPLE
 
 Get machine's $env:Path EnvironmentVariableItems object
@@ -89,7 +93,7 @@ Items     : {C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem, C:\WINDO
 .EXAMPLE
 Show index of $env:PSModulePath items
 
-PS>(Get-EnvironmentVariableItems -Name PSModulePath).ShowIndex()
+PS>(gevis PSModulePath).ShowIndex()
 
 0: C:\Users\michaelf\Documents\PowerShell\Modules
 1: C:\Program Files\PowerShell\Modules
@@ -98,6 +102,8 @@ PS>(Get-EnvironmentVariableItems -Name PSModulePath).ShowIndex()
 4: C:\Program Files\WindowsPowerShell\Modules
 5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 6: N:\lib\pow\mod
+
+
 
 #>
 function Get-EnvironmentVariableItems {
@@ -258,6 +264,7 @@ function New-EnvironmentVariableItems-Object {
 .SYNOPSIS
 Adds an environment variable for given name, value and scope (default; 'process') and separator (';') and optional position.
 
+
 .EXAMPLE
 
 Remove 'c:\foo' from $env:Path variable
@@ -281,7 +288,7 @@ PS> (Get-EnvironmentVariableItems -Name foo -Scope User -Separator '#').ShowInde
 2: bar
 3: cup
 
-PS> Remove-EnvironmentVariableItem -Name foo -Position 1 -Scope User -Separator '#' -WhatIf
+PS> revi foo 1 -Scope User -Separator '#' -WhatIf
 
 What if:
 What if:
@@ -342,3 +349,10 @@ function Remove-EnvironmentVariableItem {
 
     }
 }
+
+
+New-Alias -Name aevi -Value Add-EnvironmentVariableItem
+New-Alias -Name gevis -Value Get-EnvironmentVariableItems
+New-Alias -Name revi -Value Remove-EnvironmentVariableItem
+
+Export-ModuleMember -Alias * -Function *
