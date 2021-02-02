@@ -12,7 +12,7 @@ FunctionsToExport = @('Add-EnvironmentVariableItem', 'Get-EnvironmentVariableIte
 AliasesToExport = @('aevi', 'gevis', 'revi')
 PrivateData = @{
     PSData = @{
-        Tags = @('Environment Variable', 'path', 'item', 'split')
+        Tags = @('Environment', 'Variable', 'items', 'path', 'PSModulePath', 'split')
         LicenseUri = 'https://github.com/mikecflynn/Powershell_Module_EnvironmentVariableItems/blob/master/LICENSE'
         ProjectUri = 'https://github.com/mikecflynn/Powershell_Module_EnvironmentVariableItems'
     } 
