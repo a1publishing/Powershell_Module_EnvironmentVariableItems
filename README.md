@@ -54,7 +54,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
 
     PS > Get machine's $env:Path EnvironmentVariableItems object
 
-    PS>Get-EnvironmentVariableItems -Name Path -Scope Machine
+    PS> Get-EnvironmentVariableItems -Name Path -Scope Machine
 
     Name      : Path
     Scope     : Machine
@@ -72,7 +72,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
 
     PS > Show index of $env:PSModulePath items
 
-    PS>(gevis PSModulePath).ShowIndex()
+    PS> (gevis PSModulePath).ShowIndex()
 
     0: C:\Users\michaelf\Documents\PowerShell\Modules
     1: C:\Program Files\PowerShell\Modules
