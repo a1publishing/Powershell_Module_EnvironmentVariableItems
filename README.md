@@ -29,7 +29,7 @@ PS> Get-EnvironmentVariable path -Scope User
 
 ### Install EnvironmentVariableItems module
 
-Install manually;
+Install manually, eg., in user's $HOME Powershell Modules folder;
 ```
 Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 ```

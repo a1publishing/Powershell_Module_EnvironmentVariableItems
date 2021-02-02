@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Adds an environment variable for given name, value, scope (default, 'process') and separator (';') and optional position.
+Adds an environment variable for given name, value, scope (default; 'process') and separator (';') and optional position.
 
 .EXAMPLE
 
@@ -70,7 +70,7 @@ function Add-EnvironmentVariableItem {
 
 <#
 .SYNOPSIS
-Gets an EnvironmentVariableItems object for a given name, scope (default, 'process') and separator (';').
+Gets an EnvironmentVariableItems object for a given name, scope (default; 'process') and separator (';').
 
 .EXAMPLE
 
@@ -256,11 +256,11 @@ function New-EnvironmentVariableItems-Object {
 
 <#
 .SYNOPSIS
-Adds an environment variable for given name, value and scope (default, 'process') and separator (';') and optional position.
+Adds an environment variable for given name, value and scope (default; 'process') and separator (';') and optional position.
 
 .EXAMPLE
 
-Remove 'C:\foo' from $env:Path variable
+Remove 'c:\foo' from $env:Path variable
 
 PS> Remove-EnvironmentVariableItem -Name path -Value 'c:\foo' -Scope User -WhatIf
 
@@ -272,21 +272,23 @@ What if:
 
 .EXAMPLE
 
-Show index and remove item from  $env:Path variable
+Show index and remove item from  $env:foo variable
 
-PS> (Get-EnvironmentVariableItems -Name Path -Scope User).ShowIndex()
+PS> (Get-EnvironmentVariableItems -Name foo -Scope User -Separator '#').ShowIndex()
 
-0: C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
-1: c:\foo
-2: C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+0: foo
+1: cake
+2: bar
+3: cup
 
-PS> Remove-EnvironmentVariableItem -Name path -Position 1 -Scope User -WhatIf
+PS> Remove-EnvironmentVariableItem -Name foo -Position 1 -Scope User -Separator '#' -WhatIf
 
 What if:
+What if:
     Current Value:
-        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        foo#cake#bar#cup
     New value:
-        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        foo#bar#cup
 #>
 function Remove-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
