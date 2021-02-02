@@ -13,15 +13,16 @@ Untrusted repository
 You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running
 the Set-PSRepository cmdlet. Are you sure you want to install the modules from 'PSGallery'?
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): y
-
 ```
 
 or b) install manually;
 ```
 # install
 PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
+```
 
-# test, eg.;
+Test EnvVar installation, eg.;
+```
 PS> Import-Module EnvVar # (not strictly required)
 PS> Get-EnvironmentVariable path -Scope User
 ```
