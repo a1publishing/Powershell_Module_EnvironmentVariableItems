@@ -18,7 +18,9 @@ the Set-PSRepository cmdlet. Are you sure you want to install the modules from '
 
 ```
 
-..b) install manually
+..b) install manually..
+
+...
 
 ```powershell
 # install
