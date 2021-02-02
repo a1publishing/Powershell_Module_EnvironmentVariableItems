@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Adds an environment variable for given name, value and scope (default, 'process') and separator (';') and optional position.
+Adds an environment variable for given name, value, scope (default, 'process') and separator (';') and optional position.
 
 .EXAMPLE
 
@@ -70,11 +70,11 @@ function Add-EnvironmentVariableItem {
 
 <#
 .SYNOPSIS
-Gets an 'environment variable items' object for a given name, scope (default, 'process') and separator (';').
+Gets an EnvironmentVariableItems object for a given name, scope (default, 'process') and separator (';').
 
 .EXAMPLE
 
-Get $env:Path EnvironmentVariableItems object
+Get machine's $env:Path EnvironmentVariableItems object
 
 PS>Get-EnvironmentVariableItems -Name Path -Scope Machine
 
@@ -87,19 +87,17 @@ Value     : C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\S
 Items     : {C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem, C:\WINDOWS\System32\WindowsPowerShell\v1.0\…}
 
 .EXAMPLE
-Show index of items in $env:PSModulePath
+Show index of $env:PSModulePath items
 
-PS>(Get-EnvironmentVariableItems -Name Path -Scope Machine).ShowIndex()
+PS>(Get-EnvironmentVariableItems -Name PSModulePath).ShowIndex()
 
-0: C:\WINDOWS\system32
-1: C:\WINDOWS
-2: C:\WINDOWS\System32\Wbem
-3: C:\WINDOWS\System32\WindowsPowerShell\v1.0\
-4: C:\WINDOWS\System32\OpenSSH\
-5: C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static
-6: C:\ProgramData\chocolatey\bin
-7: C:\Program Files\PowerShell\7\
-8: C:\Program Files\Git\cmd
+0: C:\Users\michaelf\Documents\PowerShell\Modules
+1: C:\Program Files\PowerShell\Modules
+2: c:\program files\powershell\7\Modules
+3: H:\lib\pow\mod
+4: C:\Program Files\WindowsPowerShell\Modules
+5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+6: N:\lib\pow\mod
 
 #>
 function Get-EnvironmentVariableItems {
