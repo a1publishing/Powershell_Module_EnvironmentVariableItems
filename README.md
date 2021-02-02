@@ -40,11 +40,11 @@ PS> Get-EnvironmentVariableItems path -Scope User
 
 ## Usage
 ```
-PS> get-help Get-EnvironmentVariableItem -Examples
+PS> Get-Help Get-EnvironmentVariableItem -Examples
 ..
-PS> get-help Add-EnvironmentVariableItem -Examples
+PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
-PS> get-help Remove-EnvironmentVariableItem -Examples
+PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ```
 
 

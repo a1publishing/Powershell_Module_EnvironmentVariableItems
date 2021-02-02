@@ -256,6 +256,40 @@ function New-EnvironmentVariableItems-Object {
     }
 }
 
+<#
+.SYNOPSIS
+Adds an environment variable for given name, value and scope (default, 'process') and separator (';') and optional position.
+
+.EXAMPLE
+
+Remove 'C:\foo' from $env:Path variable
+
+PS> Remove-EnvironmentVariableItem -Name path -Value 'c:\foo' -Scope User -WhatIf
+
+What if:
+    Current Value:
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+    New value:
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+
+.EXAMPLE
+
+Show index and remove item from  $env:Path variable
+
+PS> (Get-EnvironmentVariableItems -Name Path -Scope User).ShowIndex()
+
+0: C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+1: c:\foo
+2: C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+
+PS> Remove-EnvironmentVariableItem -Name path -Position 1 -Scope User -WhatIf
+
+What if:
+    Current Value:
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+    New value:
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+#>
 function Remove-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
     param (
