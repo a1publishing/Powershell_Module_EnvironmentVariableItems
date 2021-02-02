@@ -5,10 +5,8 @@ Powershell module allowing handling of environment variable 'items'.  Primarily 
 
 ## Installation
 
-ONE Install EnvVar, a required (third-party) module. Options include..
-
+### Install EnvVar, a required (third-party) module. Options include..
 a) from PowershellGallery;
-
 ```
 PS> Install-Module EnvVar -RequiredVersion 0.1.0
 Untrusted repository
@@ -18,9 +16,7 @@ the Set-PSRepository cmdlet. Are you sure you want to install the modules from '
 
 ```
 
-b) install it manually
-
-
+or b) install manually
 ```
 # install
 PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
@@ -30,9 +26,8 @@ PS> Import-Module EnvVar # (not strictly required)
 PS> Get-EnvironmentVariable path -Scope User
 ```
 
-TWO Install Envir
-
-```powershell
+### Install EnvironmentVariableItems module
+```
 # install
 Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 
@@ -44,8 +39,7 @@ PS> Get-EnvironmentVariableItems path -Scope User
 
 
 ## Usage
-
-```powershell
+```
 PS> get-help Get-EnvironmentVariableItem -Examples
 ..
 PS> get-help Add-EnvironmentVariableItem -Examples
