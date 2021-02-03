@@ -65,6 +65,9 @@ SYNTAX
 ```
 PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
+```
+
+```
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Add 'C:\foo' to $env:Path variable
@@ -77,10 +80,9 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;c:\foo
+```
 
-
-
-
+```
     -------------------------- EXAMPLE 2 --------------------------
 
     PS > Insert 'C:\foo' as first item in $env:Path variable
@@ -93,10 +95,9 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
             c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+```
 
-
-
-
+```
     -------------------------- EXAMPLE 3 --------------------------
 
     PS > Insert 'C:\foo' as second last item in $env:Path variable
@@ -109,10 +110,9 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+```
 
-
-
-
+```
     -------------------------- EXAMPLE 4 --------------------------
 
     PS > Add 'cake' as last item of $env:foo in current process
@@ -147,6 +147,9 @@ SYNTAX
 ```
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ..
+```
+
+```
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Remove 'c:\foo' from $env:Path variable
@@ -158,10 +161,9 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+```
 
-
-
-
+```
     -------------------------- EXAMPLE 2 --------------------------
 
     PS > Remove last item from $env:Path
@@ -174,10 +176,9 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+```
 
-
-
-
+```
     -------------------------- EXAMPLE 3 --------------------------
 
     PS > Show index and remove second last item from $env:foo variable in the current process
@@ -215,6 +216,9 @@ SYNTAX
 ```
 PS> Get-Help Get-EnvironmentVariableItems -Examples
 ..
+```
+
+```
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Get current process $env:Path EnvironmentVariableItems object
@@ -231,10 +235,9 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
                 Files\Git\cmd;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS
                 Code\bin
     Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem…}
+```
 
-
-
-
+```
     -------------------------- EXAMPLE 2 --------------------------
 
     PS > Show index of items in $env:PSModulePath system variable
