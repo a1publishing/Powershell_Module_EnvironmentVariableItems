@@ -45,6 +45,14 @@ What if:
 
 Add 'cake' as last item of $env:foo in current process
 
+PS> Get-EnvironmentVariable -Name foo -Scope User
+
+Name            : foo
+Value           : foo#bar#cup
+Scope           : User
+ValueType       : String
+BeforeExpansion :
+
 PS> aevi foo cake -Separator '#' -whatif
 
 What if:
@@ -54,7 +62,7 @@ What if:
         foo#bar#cup#cake
 #>
 function Add-EnvironmentVariableItem {
-    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='Medium')]
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
     param (
         [Parameter(
             Mandatory,
@@ -337,7 +345,7 @@ What if:
 
 Show index and remove second last item from $env:foo variable in the current process
 
-PS> (gevis -Name foo -Separator '#').ShowIndex()
+PS> (gevis foo -Separator '#').ShowIndex()
 
 0: foo
 1: cake

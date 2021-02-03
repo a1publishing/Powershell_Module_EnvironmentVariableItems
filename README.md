@@ -48,6 +48,21 @@ PS> Get-EnvironmentVariableItems -Name PSModulePath
 
 ## Usage
 ```
+PS> Get-Help Add-EnvironmentVariableItem
+
+NAME
+    Add-EnvironmentVariableItem
+
+SYNOPSIS
+    Adds an environment variable for given Name, Value, Scope (default; 'Process') and Separator (';') and optional Index.
+
+
+SYNTAX
+    Add-EnvironmentVariableItem [-Name] <String> [-Value] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-Index
+    <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+
+
 PS> Get-Help Add-EnvironmentVariableItem -Examples
 
 NAME
@@ -118,6 +133,24 @@ SYNOPSIS
             foo#bar#cup#cake
 
 
+PS> Get-Help Remove-EnvironmentVariableItem
+
+NAME
+    Remove-EnvironmentVariableItem
+
+SYNOPSIS
+    Removes an environment variable for given Name, Value and Scope (default; 'Process') and Separator (';') and optional Index.
+
+
+SYNTAX
+    Remove-EnvironmentVariableItem [-Name] <String> [-Value] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
+    [-Confirm] [<CommonParameters>]
+
+    Remove-EnvironmentVariableItem [-Name] <String> [-Index] <Int32> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
+    [-Confirm] [<CommonParameters>]
+
+
+
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
 NAME
@@ -162,7 +195,7 @@ SYNOPSIS
 
     PS > Show index and remove second last item from $env:foo variable in the current process
 
-    PS> (gevis -Name foo -Separator '#').ShowIndex()
+    PS> (gevis foo -Separator '#').ShowIndex()
 
     0: foo
     1: cake
@@ -176,6 +209,20 @@ SYNOPSIS
             foo#cake#bar#cup
         New value:
             foo#bar#cup
+
+
+PS> Get-Help EnvironmentVariableItems
+
+NAME
+    Get-EnvironmentVariableItems
+
+SYNOPSIS
+    Gets an EnvironmentVariableItems object for a given Name, Scope (default; 'Process') and Separator (';').
+
+
+SYNTAX
+    Get-EnvironmentVariableItems [-Name] <String> [[-Scope] {Process | User | Machine}] [[-Separator] <String>] [<CommonParameters>]
+
 
 
 PS> Get-Help Get-EnvironmentVariableItems -Examples
