@@ -50,7 +50,7 @@ NAME
     Add-EnvironmentVariableItem
 
 SYNOPSIS
-    Adds an environment variable for given Name, Value, Scope (default; 'Process') and Separator (';') and optional Index.
+    Adds an environment variable for given Name, Value, Scope (default: 'Process') and Separator (';') and optional Index.
 
 
 SYNTAX
@@ -127,7 +127,7 @@ NAME
     Remove-EnvironmentVariableItem
 
 SYNOPSIS
-    Removes an environment variable for a given Name, Value or Index, Scope (default; 'Process') and Separator (';').
+    Removes an environment variable for a given Name, Value or Index, Scope (default: 'Process') and Separator (';').
 
 
 SYNTAX
@@ -198,7 +198,7 @@ NAME
     Get-EnvironmentVariableItems
 
 SYNOPSIS
-    Gets an EnvironmentVariableItems object for a given Name, Scope (default; 'Process') and Separator (';').
+    Gets an EnvironmentVariableItems object for a given Name, Scope (default: 'Process') and Separator (';').
 
 
 SYNTAX
