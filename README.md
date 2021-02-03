@@ -48,50 +48,55 @@ PS> Get-EnvironmentVariableItems -Name PSModulePath
 
 ## Usage
 ```
-PS> Get-Help Get-EnvironmentVariableItems -Examples
+PS> Get-Help Add-EnvironmentVariableItem -Examples
+
+NAME
+    Add-EnvironmentVariableItem
+
+SYNOPSIS
+    Adds an environment variable for given Name, Value, Scope (default; 'Process') and Separator (';') and optional Index.
+
 
     -------------------------- EXAMPLE 1 --------------------------
 
-    PS > Get machine's $env:Path EnvironmentVariableItems object
+    PS > Add 'C:\foo' to $env:Path variable
 
-    PS> Get-EnvironmentVariableItems -Name Path -Scope Machine
+    PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
 
-    Name      : Path
-    Scope     : Machine
-    Separator : ;
-    Value     :
-    C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH
-                \;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program
-                Files\PowerShell\7\;C:\Program Files\Git\cmd
-    Items     : {C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem, C:\WINDOWS\System32\WindowsPowerShell\v1.0\…}
+    What if:
+
+        Current Value:
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        New value:
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;c:\foo
 
 
 
 
     -------------------------- EXAMPLE 2 --------------------------
 
-    PS > Show index of $env:PSModulePath items
+    PS > Insert 'C:\foo' as first item in $env:Path variable
 
-    PS> (gevis PSModulePath).ShowIndex()
-
-    0: C:\Users\michaelf\Documents\PowerShell\Modules
-    1: C:\Program Files\PowerShell\Modules
-    2: c:\program files\powershell\7\Modules
-    3: H:\lib\pow\mod
-    4: C:\Program Files\WindowsPowerShell\Modules
-    5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
-    6: N:\lib\pow\mod
-
-
-PS> Get-Help Add-EnvironmentVariableItem -Examples
-
-    -------------------------- EXAMPLE 1 --------------------------
-
-    PS > Insert 'C:\foo' as the last but one item in $env:Path variable
-
-    PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Position -1 -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index 0 -WhatIf
 
     What if:
+
+        Current Value:
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        New value:
+            c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+
+
+
+
+    -------------------------- EXAMPLE 3 --------------------------
+
+    PS > Insert 'C:\foo' as second last item in $env:Path variable
+
+    PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index -2 -WhatIf
+
+    What if:
+
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
@@ -100,11 +105,11 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
 
 
-    -------------------------- EXAMPLE 2 --------------------------
+    -------------------------- EXAMPLE 4 --------------------------
 
-    PS > Add 'cake' as last item of $env:foo
+    PS > Add 'cake' as last item of $env:foo in current process
 
-    PS> aevi foo cake -Scope User -Separator '#' -whatif
+    PS> aevi foo cake -Separator '#' -whatif
 
     What if:
         Current Value:
@@ -114,6 +119,13 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
 
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
+
+NAME
+    Remove-EnvironmentVariableItem
+
+SYNOPSIS
+    Removes an environment variable for given Name, Value and Scope (default; 'Process') and Separator (';') and optional Index.
+
 
     -------------------------- EXAMPLE 1 --------------------------
 
@@ -132,22 +144,80 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     -------------------------- EXAMPLE 2 --------------------------
 
-    PS > Show index and remove item from  $env:foo variable
+    PS > Remove last item from $env:Path
 
-    PS> (Get-EnvironmentVariableItems -Name foo -Scope User -Separator '#').ShowIndex()
+    PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
+
+    What if:
+
+        Current Value:
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        New value:
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+
+
+
+
+    -------------------------- EXAMPLE 3 --------------------------
+
+    PS > Show index and remove second last item from $env:foo variable in the current process
+
+    PS> (gevis -Name foo -Separator '#').ShowIndex()
 
     0: foo
     1: cake
     2: bar
     3: cup
 
-    PS> revi foo 1 -Scope User -Separator '#' -WhatIf
+    PS> revi foo -Index -2 -Separator '#' -WhatIf
 
     What if:
         Current Value:
             foo#cake#bar#cup
         New value:
             foo#bar#cup
+
+
+PS> Get-Help Get-EnvironmentVariableItems -Examples
+
+NAME
+    Get-EnvironmentVariableItems
+
+SYNOPSIS
+    Gets an EnvironmentVariableItems object for a given Name, Scope (default; 'Process') and Separator (';').
+
+
+    -------------------------- EXAMPLE 1 --------------------------
+
+    PS > Get current process $env:Path EnvironmentVariableItems object
+
+    PS> Get-EnvironmentVariableItems -Name Path
+
+    Name      : Path
+    Scope     : Process
+    Separator : ;
+    Value     : C:\Program
+    Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
+                0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI
+                Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program
+                Files\Git\cmd;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS
+                Code\bin
+    Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem…}
+
+
+
+
+    -------------------------- EXAMPLE 2 --------------------------
+
+    PS > Show index of items in $env:PSModulePath system variable
+
+    PS> (gevis PSModulePath -Scope Machine).ShowIndex()
+
+    0: C:\Program Files\WindowsPowerShell\Modules
+    1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+    2: N:\lib\pow\mod
+
+
 
 ```
 
