@@ -131,8 +131,9 @@ SYNOPSIS
             foo#bar#cup
         New value:
             foo#bar#cup#cake
+```
 
-
+```
 PS> Get-Help Remove-EnvironmentVariableItem
 
 NAME
@@ -148,9 +149,9 @@ SYNTAX
 
     Remove-EnvironmentVariableItem [-Name] <String> [-Index] <Int32> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
     [-Confirm] [<CommonParameters>]
+```
 
-
-
+```
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
 NAME
@@ -209,8 +210,9 @@ SYNOPSIS
             foo#cake#bar#cup
         New value:
             foo#bar#cup
+```
 
-
+```
 PS> Get-Help EnvironmentVariableItems
 
 NAME
@@ -222,9 +224,9 @@ SYNOPSIS
 
 SYNTAX
     Get-EnvironmentVariableItems [-Name] <String> [[-Scope] {Process | User | Machine}] [[-Separator] <String>] [<CommonParameters>]
+```
 
-
-
+```
 PS> Get-Help Get-EnvironmentVariableItems -Examples
 
 NAME
@@ -264,11 +266,7 @@ SYNOPSIS
     1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
     2: N:\lib\pow\mod
 
-
-
 ```
-
-
 
 
 [MIT License (c) 2021 a1publishing.com] (LICENSE)
