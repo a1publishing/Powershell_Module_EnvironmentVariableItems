@@ -1,7 +1,7 @@
 # EnvironmentVariableItems
 
 ## Description
-Powershell module with commands to easily add to or remove items from 'collection type' Windows Environment Variables. For example, add 'C:\foo' to $env:Path..
+Powershell module with commands to easily add or remove items from 'collection type' Windows Environment Variables.  For example, add 'C:\foo' to $env:Path.
 
 ## Installation
 
