@@ -22,7 +22,7 @@ PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
 
 Test EnvVar installation, eg.;
 ```
-PS> Import-Module EnvVar # (not strictly required)
+PS> Import-Module EnvVar 
 PS> Get-EnvironmentVariable path -Scope User
 ```
 
@@ -40,7 +40,7 @@ PS> Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 
 Test EnvironmentVariableItems, eg.;
 ```
-PS> Import-Module EnvironmentVariableItems # (not strictly required)
+PS> Import-Module EnvironmentVariableItems 
 PS> Get-EnvironmentVariableItems -Name PSModulePath
 ```
 
