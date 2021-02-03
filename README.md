@@ -1,7 +1,7 @@
 # EnvironmentVariableItems
 
 ## Description
-Easily add, insert or remove from `'collection type`' Windows Environment Variables. For example, add C:\MyModules as first item to user's `$env:PSModulePath.
+Powershell module with commands to easily add to or remove items from 'collection type' Windows Environment Variables. For example, add 'C:\foo' to $env:Path..
 
 ## Installation
 
