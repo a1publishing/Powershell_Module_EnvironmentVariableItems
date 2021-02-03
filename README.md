@@ -60,9 +60,9 @@ SYNOPSIS
 SYNTAX
     Add-EnvironmentVariableItem [-Name] <String> [-Value] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-Index
     <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
-
-
+```
 PS> Get-Help Add-EnvironmentVariableItem -Examples
 
 NAME
