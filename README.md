@@ -1,7 +1,7 @@
 # EnvironmentVariableItems
 
 ## Description
-Powershell module allowing handling of environment variable 'items'.  Primarily useful for, though not restricted to, path type variables, eg.; adding 'C:\foo' to $env:Path.
+Easily add, insert or remove from `'collection type`' Windows Environment Variables. For example, add C:\MyModules as first item to user's `$env:PSModulePath.
 
 ## Installation
 
