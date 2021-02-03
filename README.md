@@ -64,14 +64,7 @@ SYNTAX
 
 ```
 PS> Get-Help Add-EnvironmentVariableItem -Examples
-
-NAME
-    Add-EnvironmentVariableItem
-
-SYNOPSIS
-    Adds an environment variable for given Name, Value, Scope (default; 'Process') and Separator (';') and optional Index.
-
-
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Add 'C:\foo' to $env:Path variable
@@ -140,7 +133,7 @@ NAME
     Remove-EnvironmentVariableItem
 
 SYNOPSIS
-    Removes an environment variable for given Name, Value and Scope (default; 'Process') and Separator (';') and optional Index.
+    Removes an environment variable for a given Name, Value or Index, Scope (default; 'Process') and Separator (';').
 
 
 SYNTAX
@@ -153,14 +146,7 @@ SYNTAX
 
 ```
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
-
-NAME
-    Remove-EnvironmentVariableItem
-
-SYNOPSIS
-    Removes an environment variable for given Name, Value and Scope (default; 'Process') and Separator (';') and optional Index.
-
-
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Remove 'c:\foo' from $env:Path variable
@@ -228,14 +214,7 @@ SYNTAX
 
 ```
 PS> Get-Help Get-EnvironmentVariableItems -Examples
-
-NAME
-    Get-EnvironmentVariableItems
-
-SYNOPSIS
-    Gets an EnvironmentVariableItems object for a given Name, Scope (default; 'Process') and Separator (';').
-
-
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Get current process $env:Path EnvironmentVariableItems object
