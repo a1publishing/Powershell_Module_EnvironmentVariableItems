@@ -65,9 +65,7 @@ SYNTAX
 ```
 PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
-```
-
-```
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Add 'C:\foo' to $env:Path variable
@@ -147,9 +145,7 @@ SYNTAX
 ```
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ..
-```
-
-```
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Remove 'c:\foo' from $env:Path variable
@@ -216,9 +212,7 @@ SYNTAX
 ```
 PS> Get-Help Get-EnvironmentVariableItems -Examples
 ..
-```
-
-```
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Get current process $env:Path EnvironmentVariableItems object
