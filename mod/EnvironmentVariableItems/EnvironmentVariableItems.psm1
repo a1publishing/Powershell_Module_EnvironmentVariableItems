@@ -344,7 +344,7 @@ What if:
 
 Show index and remove third last item from $env:foo variable in the current process
 
-PS> (Get-EnvironmentVariableItems foo -Separator '#').ShowIndex()
+PS> (gevisfoo -Separator '#').ShowIndex()
 
 0: foo
 1: cake

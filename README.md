@@ -175,7 +175,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
 Show index and remove third last item from $env:foo variable in the current process
 
-PS> (Get-EnvironmentVariableItems foo -Separator '#').ShowIndex()
+PS> (gevis foo -Separator '#').ShowIndex()
 
 0: foo
 1: cake
