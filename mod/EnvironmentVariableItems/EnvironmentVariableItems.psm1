@@ -61,6 +61,10 @@ What if:
     New value:
         foo#bar#cup#cake
 #>
+
+#
+$VerbosePreference = "continue"
+
 function Add-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
     param (
@@ -223,18 +227,6 @@ function New-EnvironmentVariableItems-Object {
                     [int] $ItemsCount
             )
 
-            <#
-            $len = $this.Items.count
-            if ($Index -le $len -and $(-($Index) -le $len)) {
-                if ($Index -lt 0) {
-                    $len + $Index
-                } else {
-                    $Index
-                }
-            } else {
-                Write-Host "Index $Index is out of range"
-            }
-            #>
             if ($Index -lt $ItemsCount -and $(-($Index) -le $ItemsCount)) {
                 if ($Index -lt 0) {
                     $ItemsCount + $Index
@@ -242,9 +234,8 @@ function New-EnvironmentVariableItems-Object {
                     $Index
                 }
             } else {
-                Write-Host "Index $Index is out of range"
+                Write-Verbose "Index $Index is out of range"
             }
-            
             
         } -Force
 
@@ -276,7 +267,7 @@ function New-EnvironmentVariableItems-Object {
                 if (($this.Items.IndexOf($Value)) -ge 0) {
                     $this.Items.Remove($Value)
                 } else {
-                    Write-Host "Value $Value not found"
+                    Write-Verbose "Value $Value not found"
                     return $False
                 }                    
             }
@@ -284,12 +275,12 @@ function New-EnvironmentVariableItems-Object {
         
         $obj | Add-Member ScriptMethod ShowIndex { 
             process {
-                Write-Host    
+                Write-Verbose "`n"
                 for ($i = 0; $i -lt $this.Items.count; $i++) {
-                    Write-Host "${i}: $($this.Items[$i].ToString())"
+                    Write-Verbose "${i}: $($this.Items[$i].ToString())"
                 }
-                Write-Host    
-                Write-Host    
+                Write-Verbose "`n"
+                Write-Verbose "`n"
             }
          } -Force
 
@@ -384,7 +375,7 @@ function Remove-EnvironmentVariableItem {
         [Parameter()] 
             [String] $Separator = ";"
 
-    )    
+    ) 
     process {
 
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
