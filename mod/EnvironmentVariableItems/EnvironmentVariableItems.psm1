@@ -63,7 +63,7 @@ What if:
 #>
 
 #
-$VerbosePreference = "continue"
+#$VerbosePreference = "continue"
 
 function Add-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
