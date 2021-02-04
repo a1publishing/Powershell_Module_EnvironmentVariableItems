@@ -61,8 +61,6 @@ What if:
     New value:
         foo#bar#cup#cake
 #>
-
-
 function Add-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
     param (
