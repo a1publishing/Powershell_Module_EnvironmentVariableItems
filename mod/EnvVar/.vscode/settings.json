@@ -1,5 +1,0 @@
-{
-    "files.trimTrailingWhitespace": true,
-    "powershell.codeFormatting.newLineAfterCloseBrace": false,
-    "powershell.helpCompletion": "BlockComment"
-}

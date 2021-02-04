@@ -153,7 +153,7 @@ function GetWhatIf() {
 
 
     Current Value: 
-        $((Get-EnvironmentVariable -Name $Name -Scope $Scope).ToString())
+        $([Environment]::GetEnvironmentVariable($Name, $Scope))
     New value: 
         $($evis.ToString())
 
@@ -171,7 +171,7 @@ function New-EnvironmentVariableItems-Object {
             [String] $Separator = ';'
     )
     process {
-        $value = (Get-EnvironmentVariable -Name $Name -Scope $Scope).Value
+        $value = [Environment]::GetEnvironmentVariable($Name, $Scope)
         $items = $value -split $Separator
 
         $obj = [PSCustomObject]@{
@@ -304,7 +304,7 @@ function New-EnvironmentVariableItems-Object {
 
          $obj | Add-Member ScriptMethod UpdateEnvironmentVariable { 
             $this.Value = $this.ToString()
-            Set-EnvironmentVariable -Name $this.Name -value $this.Value -scope $this.Scope | Out-Null
+            [Environment]::SetEnvironmentVariable($this.Name, $this.Value, $this.Scope)
          } -Force
 
         return $obj

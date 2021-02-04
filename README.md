@@ -5,25 +5,6 @@ Powershell module with commands to easily add or remove items from 'collection t
 
 ## Installation
 
-### Install EnvVar, a required (third-party) module
-a) from PowershellGallery;
-```
-PS> Install-Module EnvVar -RequiredVersion 0.1.0
-```
-
-or b) install manually, eg.;
-```
-PS> Copy-Item -r mod\EnvVar $HOME\Documents\PowerShell\Modules
-```
-
-Test EnvVar installation, eg.;
-```
-PS> Import-Module EnvVar 
-PS> Get-EnvironmentVariable path -Scope User
-```
-
-### Install EnvironmentVariableItems module
-
 a) from PowershellGallery;
 ```
 PS> Install-Module EnvironmentVariableItems
@@ -39,7 +20,6 @@ Test EnvironmentVariableItems, eg.;
 PS> Import-Module EnvironmentVariableItems 
 PS> Get-EnvironmentVariableItems -Name PSModulePath
 ```
-
 
 
 ## Usage
