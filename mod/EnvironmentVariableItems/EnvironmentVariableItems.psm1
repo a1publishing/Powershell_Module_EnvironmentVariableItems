@@ -86,9 +86,6 @@ function Add-EnvironmentVariableItem {
     )    
     process {
 
-        # # Write-Verbose messages to console
-        $VerbosePreference = "continue"
-
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
 
         if ($PSBoundParameters.ContainsKey('Index')) {
@@ -177,6 +174,7 @@ function New-EnvironmentVariableItems-Object {
             [String] $Separator = ';'
     )
     process {
+
         $value = [Environment]::GetEnvironmentVariable($Name, $Scope)
         $items = $value -split $Separator
 
@@ -236,7 +234,9 @@ function New-EnvironmentVariableItems-Object {
                     $Index
                 }
             } else {
-                Write-Verbose "Index $Index is out of range"
+                Write-Host
+                Write-Host  -ForegroundColor Red "Index $Index is out of range"
+                Write-Host
             }
             
         } -Force
@@ -269,7 +269,9 @@ function New-EnvironmentVariableItems-Object {
                 if (($this.Items.IndexOf($Value)) -ge 0) {
                     $this.Items.Remove($Value)
                 } else {
-                    Write-Verbose "Value $Value not found"
+                    Write-Host
+                    Write-Host  -ForegroundColor Red "Value $Value not found"
+                    Write-Host
                     return $False
                 }                    
             }
@@ -277,12 +279,12 @@ function New-EnvironmentVariableItems-Object {
         
         $obj | Add-Member ScriptMethod ShowIndex { 
             process {
-                Write-Verbose "`n"
+                Write-Host
                 for ($i = 0; $i -lt $this.Items.count; $i++) {
-                    Write-Verbose "${i}: $($this.Items[$i].ToString())"
+                    Write-Host -ForegroundColor Green "${i}: $($this.Items[$i].ToString())"
                 }
-                Write-Verbose "`n"
-                Write-Verbose "`n"
+                Write-Host
+                Write-Host
             }
          } -Force
 
@@ -379,9 +381,6 @@ function Remove-EnvironmentVariableItem {
 
     ) 
     process {
-
-        # Write-Verbose messages to console
-        $VerbosePreference = "continue"
 
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
 
