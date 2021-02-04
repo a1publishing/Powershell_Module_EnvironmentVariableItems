@@ -343,16 +343,16 @@ What if:
 
 .EXAMPLE
 
-Show index and remove second last item from $env:foo variable in the current process
+Show index and remove third last item from $env:foo variable in the current process
 
-PS> (gevis foo -Separator '#').ShowIndex()
+PS> (Get-EnvironmentVariableItems foo -Separator '#').ShowIndex()
 
 0: foo
 1: cake
 2: bar
 3: cup
 
-PS> revi foo -Index -2 -Separator '#' -WhatIf
+PS> revi foo -Index -3 -Separator '#' -WhatIf
 
 What if:
     Current Value:
