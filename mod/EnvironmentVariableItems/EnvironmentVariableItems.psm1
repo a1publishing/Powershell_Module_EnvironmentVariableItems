@@ -195,8 +195,7 @@ function New-EnvironmentVariableItems-Object {
             )    
             process {
                 if ($PSBoundParameters.ContainsKey('Index')) {
-                    # negative value counts from the end, eg., -1 refers to last element.  GetPositiveIndex method converts negative to positive accordingly but, in this case, before item has been added. So add 1 to items count.  Also add 1 for negative values.
-                    if ($Index -lt 0) {$offset = 1} else {$offset = 0}
+                    # Add 1 to items count reflecting length after addition
                     if (($ind = $this.GetPositiveIndex($Index, $this.Items.count + 1)) -is [int]) {
                         $this.Items.insert($ind, $Value)
                     } else {
