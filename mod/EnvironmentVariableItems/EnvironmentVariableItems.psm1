@@ -281,7 +281,7 @@ function New-EnvironmentVariableItems-Object {
             process {
                 Write-Host
                 for ($i = 0; $i -lt $this.Items.count; $i++) {
-                    Write-Host -ForegroundColor Green "${i}: $($this.Items[$i].ToString())"
+                    Write-Host -ForegroundColor Yellow "${i}: $($this.Items[$i].ToString())"
                 }
                 Write-Host
                 Write-Host
