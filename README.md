@@ -5,14 +5,15 @@ Powershell module with commands to easily add or remove items from 'collection t
 
 ## Installation
 
-a) from PowershellGallery;
+a) install from PowershellGallery
 ```
 PS> Install-Module EnvironmentVariableItems
 ```
 
-or b) install manually, eg.;
+or b) save from PowershellGallery and install manually, eg.;
 ```
-PS> Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
+PS> Save-Module -Name EnvironmentVariableItems -Repository PSGallery -Path C:\testmod
+PS> Copy-Item -r C:\testmod\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 ```
 
 Test EnvironmentVariableItems, eg.;
@@ -20,6 +21,7 @@ Test EnvironmentVariableItems, eg.;
 PS> Import-Module EnvironmentVariableItems 
 PS> Get-EnvironmentVariableItems -Name PSModulePath
 ```
+
 
 
 ## Usage
