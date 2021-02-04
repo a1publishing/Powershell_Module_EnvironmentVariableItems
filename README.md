@@ -173,7 +173,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 3 --------------------------
 
-Show index and remove third last item from $env:foo variable in the current process
+Show index and remove second item from $env:foo variable in the current process
 
 PS> (gevis foo -Separator '#').ShowIndex()
 
@@ -182,7 +182,7 @@ PS> (gevis foo -Separator '#').ShowIndex()
 2: bar
 3: cup
 
-PS> revi foo -Index -3 -Separator '#' -WhatIf
+PS> revi foo -Index 1 -Separator '#' -WhatIf
 
 What if:
     Current Value:
