@@ -62,8 +62,6 @@ What if:
         foo#bar#cup#cake
 #>
 
-#
-#$VerbosePreference = "continue"
 
 function Add-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
@@ -87,6 +85,10 @@ function Add-EnvironmentVariableItem {
             [int] $Index
     )    
     process {
+
+        # # Write-Verbose messages to console
+        $VerbosePreference = "continue"
+
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
 
         if ($PSBoundParameters.ContainsKey('Index')) {
@@ -377,6 +379,9 @@ function Remove-EnvironmentVariableItem {
 
     ) 
     process {
+
+        # Write-Verbose messages to console
+        $VerbosePreference = "continue"
 
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
 

@@ -13,11 +13,13 @@ PS> Install-Module EnvironmentVariableItems
 or b) save from PowershellGallery and install manually, eg.;
 ```
 PS> Save-Module -Name EnvironmentVariableItems -Repository PSGallery -Path C:\testmod
+PS> $env:PSModulePath
 PS> Copy-Item -r C:\testmod\EnvironmentVariableItems $HOME\Documents\WindowsPowerShell\Modules
 ```
 
 or c) download from GitHub (https://github.com/mikecflynn/Powershell_Module_EnvironmentVariableItems) and install manually, eg.;
 ```
+PS> $env:PSModulePath
 PS> Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\WindowsPowerShell\Modules
 ```
 
