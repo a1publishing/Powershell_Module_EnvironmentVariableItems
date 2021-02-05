@@ -231,4 +231,4 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
 ```
 
 
-[MIT License](../blob/master/LICENSE) (c) 2021 [a1publishing.com](https://www.a1publishing.com)
+[MIT License (c) 2021](../master/LICENSE) [a1publishing.com](https://www.a1publishing.com)
