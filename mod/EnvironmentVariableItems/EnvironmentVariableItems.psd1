@@ -12,8 +12,8 @@ AliasesToExport = @('aevi', 'gevis', 'revi')
 PrivateData = @{
     PSData = @{
         Tags = @('Environment', 'Variables', 'items', 'Windows', 'path', 'split')
-        LicenseUri = 'https://github.com/mikecflynn/Powershell_Module_EnvironmentVariableItems/blob/master/LICENSE'
-        ProjectUri = 'https://github.com/mikecflynn/Powershell_Module_EnvironmentVariableItems'
+        LicenseUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/blob/master/LICENSE'
+        ProjectUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems'
     } 
 }
 }
