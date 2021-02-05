@@ -17,7 +17,7 @@ PS> $env:PSModulePath
 PS> Copy-Item -r C:\testmod\EnvironmentVariableItems $HOME\Documents\WindowsPowerShell\Modules
 ```
 
-or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems) and install manually, eg.;
+or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/archive/master.zip) and install manually, eg.;
 ```
 PS> $env:PSModulePath
 PS> Copy-Item -r mod\EnvironmentVariableItems $HOME\Documents\WindowsPowerShell\Modules
