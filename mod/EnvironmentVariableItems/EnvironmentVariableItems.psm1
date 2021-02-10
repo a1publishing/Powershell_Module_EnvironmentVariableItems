@@ -86,14 +86,14 @@ function Add-EnvironmentVariableItem {
 
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
 
-        if (n) {
-            $result = $evis.AddItem($Value, $Index) -ne $False
+        if ($PSBoundParameters.ContainsKey('Index')) {
+            $result = $evis.AddItem($Value, $Index)
         } else {
-            $result = $evis.AddItem($Value) -ne $False
+            $result = $evis.AddItem($Value)
         }
 
-        if ($result -ne $False) {
-            $s = GetWhatIf
+        if ($result -eq $True) {
+                $s = GetWhatIf
             if ($PSCmdlet.ShouldProcess($s, '', '')){
                 $evis.UpdateEnvironmentVariable()
                 $evis
@@ -173,20 +173,20 @@ function New-EnvironmentVariableItems-Object {
     )
     process {
 
-        $value = [Environment]::GetEnvironmentVariable($Name, $Scope)
- 
+        #$value = ([Environment]::GetEnvironmentVariable($Name, $Scope)).Trim($Separator)
+        $value = ([Environment]::GetEnvironmentVariable($Name, $Scope))
+        if ($null -ne $value) {$value = $value.Trim($Separator)}
+
         $items = [System.Collections.ArrayList]@()
         if ($null -ne $value) {        
             [System.Collections.ArrayList] $items = $value -split $Separator
         }
-
 
         $obj = [PSCustomObject]@{
             Name    = $Name
             Scope   = $Scope
             Separator = $Separator
             Value   = $Value
-            #Items   = [System.Collections.ArrayList] $items
             Items   = $items
         }
 
@@ -206,11 +206,13 @@ function New-EnvironmentVariableItems-Object {
                     # Add 1 to items count reflecting length after addition
                     if (($ind = $this.GetPositiveIndex($Index, $this.Items.count + 1)) -is [int]) {
                         $this.Items.insert($ind, $Value)
-                    } else {
-                        return $False
+                        return $True
+                    #} else {
+                    #    return $False
                     }                    
                 } else {
                     $this.Items.add($Value)
+                    return $True
                 }
             }
          } -Force
