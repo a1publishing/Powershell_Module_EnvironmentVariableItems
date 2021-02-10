@@ -86,7 +86,7 @@ function Add-EnvironmentVariableItem {
 
         $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
 
-        if ($PSBoundParameters.ContainsKey('Index')) {
+        if (n) {
             $result = $evis.AddItem($Value, $Index) -ne $False
         } else {
             $result = $evis.AddItem($Value) -ne $False
@@ -174,14 +174,20 @@ function New-EnvironmentVariableItems-Object {
     process {
 
         $value = [Environment]::GetEnvironmentVariable($Name, $Scope)
-        $items = $value -split $Separator
+ 
+        $items = [System.Collections.ArrayList]@()
+        if ($null -ne $value) {        
+            [System.Collections.ArrayList] $items = $value -split $Separator
+        }
+
 
         $obj = [PSCustomObject]@{
             Name    = $Name
             Scope   = $Scope
             Separator = $Separator
             Value   = $Value
-            Items   = [System.Collections.ArrayList] $items
+            #Items   = [System.Collections.ArrayList] $items
+            Items   = $items
         }
 
         $obj | Add-Member ScriptMethod AddItem { 
