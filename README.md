@@ -155,7 +155,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     PS > Show index and remove second item from $env:foo variable in the current process
 
-    PS> (gevis foo -Separator '#').ShowIndex()
+    PS> (gevis foo -se '#').ShowIndex()
 
     Machine
     0: mat
