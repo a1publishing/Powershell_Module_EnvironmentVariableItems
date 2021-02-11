@@ -47,7 +47,7 @@ Scope           : User
 ValueType       : String
 BeforeExpansion :
 
-PS> aevi foo cake -Separator '#' -whatif
+PS> aevi foo cake -separator '#' -whatif
 What if:
     Current Value:
         foo#bar#cup
@@ -394,7 +394,7 @@ What if:
 
 Show index and remove second item from $env:foo variable in the current process
 
-PS> (gevis foo -Separator '#').ShowIndex()
+PS> (gevis foo -se '#').ShowIndex()
 
 Machine
 0: mat
