@@ -7,9 +7,7 @@ Adds an environment variable for given Name, Value, Scope (default; 'Process') a
 Add 'C:\foo' to $env:Path variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
-
 What if:
-
     Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
@@ -20,9 +18,7 @@ What if:
 Insert 'C:\foo' as first item in $env:Path variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index 0 -WhatIf
-
 What if:
-
     Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
@@ -33,9 +29,7 @@ What if:
 Insert 'C:\foo' as second last item in $env:Path variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index -2 -WhatIf
-
 What if:
-
     Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
@@ -54,7 +48,6 @@ ValueType       : String
 BeforeExpansion :
 
 PS> aevi foo cake -Separator '#' -whatif
-
 What if:
     Current Value:
         foo#bar#cup
@@ -95,7 +88,8 @@ function Add-EnvironmentVariableItem {
         if ($result -eq $True) {
                 $s = GetWhatIf
             if ($PSCmdlet.ShouldProcess($s, '', '')){
-                $evis.UpdateEnvironmentVariable()
+                #$evis.UpdateEnvironmentVariable()
+                $evis.SetEnvironmentVariable($evis.Name, $evis.ToString(), $evis.Scope)
                 $evis
             }
         } else { 
@@ -103,6 +97,7 @@ function Add-EnvironmentVariableItem {
         }
     }
 }
+
 
 <#
 .SYNOPSIS
@@ -128,11 +123,24 @@ Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\
 
 Show index of items in $env:PSModulePath system variable
 
-PS> (gevis PSModulePath -Scope Machine).ShowIndex()
+PS> (gevis psmodulepath).showindex()
 
+Machine
 0: C:\Program Files\WindowsPowerShell\Modules
 1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 2: N:\lib\pow\mod
+
+User
+0: H:\lib\pow\mod
+
+Process
+0: C:\Users\michaelf\Documents\PowerShell\Modules
+1: C:\Program Files\PowerShell\Modules
+2: c:\program files\powershell\7\Modules
+3: H:\lib\pow\mod
+4: C:\Program Files\WindowsPowerShell\Modules
+5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+6: N:\lib\pow\mod
 #>
 function Get-EnvironmentVariableItems {
     [CmdletBinding()]
@@ -140,66 +148,50 @@ function Get-EnvironmentVariableItems {
         [Parameter(Mandatory)]
             [String] $Name,
         [Parameter()]
-            [System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process,
+            #[System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process,
+            [System.EnvironmentVariableTarget] $Scope,
         [Parameter()]
             [String] $Separator = ';'
     )    
     process {
-        New-EnvironmentVariableItems-Object $Name $Scope $Separator
+
+        # default Scope with Process if $null but also save actual parameter value including if null
+        $Script:ScopePreDefault = $Scope
+        if ($null -eq $Scope) {
+            $Scope = [System.EnvironmentVariableTarget]::Process
+        } 
+
+        $evis = New-EnvironmentVariableItems-Object $Name $Scope $Separator
+        $evis.SetItems($Name, $Scope, $Separator)
+
+        $evis
     }
 }
 
 function GetWhatIf() {
     @"
 
-
     Current Value: 
-        $([Environment]::GetEnvironmentVariable($Name, $Scope))
+        $($evis.GetEnvironmentVariable($Name, $Scope))
     New value: 
         $($evis.ToString())
-
 
 "@
 }
 
 function New-EnvironmentVariableItems-Object {
     param (
-        [Parameter(Mandatory)]
-            [String] $Name,
-        [Parameter()]
-            [System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process,
-        [Parameter()]
-            [String] $Separator = ';'
+        [String] $Name,
+        [System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process,
+        [String] $Separator = ';'
     )
     process {
-
-        #$value = ([Environment]::GetEnvironmentVariable($Name, $Scope)).Trim($Separator)
-        $value = ([Environment]::GetEnvironmentVariable($Name, $Scope))
-        if ($null -ne $value) {$value = $value.Trim($Separator)}
-
-        $items = [System.Collections.ArrayList]@()
-        if ($null -ne $value) {        
-            [System.Collections.ArrayList] $items = $value -split $Separator
-        }
-
-        $obj = [PSCustomObject]@{
-            Name    = $Name
-            Scope   = $Scope
-            Separator = $Separator
-            Value   = $Value
-            Items   = $items
-        }
+        $obj = [PSCustomObject]@{}
 
         $obj | Add-Member ScriptMethod AddItem { 
-            [CmdletBinding()]
             param (
-                [Parameter(
-                    Mandatory,
-                    Position = 0
-                )] 
-                    [String] $Value,        
-                [Parameter()] 
-                    [int] $Index
+                [String] $Value,        
+                [int] $Index
             )    
             process {
                 if ($PSBoundParameters.ContainsKey('Index')) {
@@ -207,8 +199,6 @@ function New-EnvironmentVariableItems-Object {
                     if (($ind = $this.GetPositiveIndex($Index, $this.Items.count + 1)) -is [int]) {
                         $this.Items.insert($ind, $Value)
                         return $True
-                    #} else {
-                    #    return $False
                     }                    
                 } else {
                     $this.Items.add($Value)
@@ -217,20 +207,40 @@ function New-EnvironmentVariableItems-Object {
             }
          } -Force
         
-        # check index is within range and return (as positive value if required)
-        $obj | Add-Member ScriptMethod GetPositiveIndex { 
-            [CmdletBinding()]
+         $obj | Add-Member ScriptMethod GetEnvironmentVariable { 
             param (
-                [Parameter(
-                    Mandatory,
-                    Position = 0
-                )] 
-                    [int] $Index,
-                [Parameter(
-                    Mandatory,
-                    Position = 1
-                )] 
-                    [int] $ItemsCount
+                [String] $Name,        
+                [System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process
+            )
+            process {
+                [Environment]::GetEnvironmentVariable($Name, $Scope)
+            }
+         }
+
+         $obj | Add-Member ScriptMethod GetItems { 
+            param (
+                [String] $Name,
+                [System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process,
+                [String] $Separator = ';'
+            )
+            process {
+                $value = $this.GetEnvironmentVariable($Name, $Scope)
+                if ($null -ne $value) {$value = $value.Trim($Separator)}
+        
+                $items = @()
+                if ($null -ne $value) {        
+                    $items = $value -split $Separator
+                }
+
+                $items
+            }
+         }
+            
+         # check index is within range and return (as positive value if required)
+        $obj | Add-Member ScriptMethod GetPositiveIndex { 
+            param (
+                [int] $Index,
+                [int] $ItemsCount
             )
 
             if ($Index -lt $ItemsCount -and $(-($Index) -le $ItemsCount)) {
@@ -248,28 +258,21 @@ function New-EnvironmentVariableItems-Object {
         } -Force
 
         $obj | Add-Member ScriptMethod RemoveItemByIndex { 
-            [CmdletBinding()]
             param (
-                [Parameter(Mandatory)] 
-                    [int] $Index
+                [int] $Index
             )    
             process {
-                    if (($ind = $this.GetPositiveIndex($Index, $this.Items.count)) -is [int]) {
-                        $this.Items.RemoveAt($ind)
-                    } else {
-                        return $False
-                    }                    
+                if (($ind = $this.GetPositiveIndex($Index, $this.Items.count)) -is [int]) {
+                    $this.Items.RemoveAt($ind)
+                } else {
+                    return $False
+                }                    
             }
          } -Force
         
          $obj | Add-Member ScriptMethod RemoveItemByValue { 
-            [CmdletBinding()]
             param (
-                [Parameter(
-                    Mandatory,
-                    Position = 0
-                )] 
-                    [String] $Value
+                [String] $Value
             )    
             process {
                 if (($this.Items.IndexOf($Value)) -ge 0) {
@@ -282,17 +285,60 @@ function New-EnvironmentVariableItems-Object {
                 }                    
             }
          } -Force
-        
-        $obj | Add-Member ScriptMethod ShowIndex { 
+
+         $obj | Add-Member ScriptMethod SetItems { 
+            param (
+                [String] $Name = $this.Name,
+                [System.EnvironmentVariableTarget] $Scope = $this.Scope,
+                [String] $Separator = $this.Separator
+            )
             process {
-                Write-Host
-                for ($i = 0; $i -lt $this.Items.count; $i++) {
-                    Write-Host -ForegroundColor Blue "${i}: $($this.Items[$i].ToString())"
+                $this.Items = [System.Collections.ArrayList] @($this.GetItems($Name, $Scope, $Separator))
+            }
+         }
+
+        $obj | Add-Member ScriptMethod ShowIndex { 
+
+            process {
+                Write-Host 
+                if ($Script:ScopePreDefault -eq $null) {
+                    $this.ShowIndexForScope([System.EnvironmentVariableTarget]::Machine)
+                    $this.ShowIndexForScope([System.EnvironmentVariableTarget]::User)
+                    $this.ShowIndexForScope([System.EnvironmentVariableTarget]::Process)
+                } else {
+                    $this.ShowIndexForScope($this.Scope)
                 }
                 Write-Host
                 Write-Host
             }
          } -Force
+
+         $obj | Add-Member ScriptMethod ShowIndexForScope { 
+            param (
+                [System.EnvironmentVariableTarget] $Scope
+            )
+            process {
+                Write-Host $Scope
+                $items = @($this.GetItems($this.Name, $Scope, $this.Separator))
+                for ($i = 0; $i -lt $items.count; $i++) {
+                    Write-Host -ForegroundColor Blue "${i}: $($items[$i].ToString())"
+                }
+                Write-Host
+            }
+         } -Force
+
+
+
+         $obj | Add-Member ScriptMethod SetEnvironmentVariable { 
+            param (
+                [String] $Name,        
+                [String] $Value,        
+                [System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process
+            )
+            process {
+                [Environment]::SetEnvironmentVariable($Name, $Value, $Scope)
+            }
+         }
 
          $obj | Add-Member ScriptMethod ToString { 
             $s = ''
@@ -303,11 +349,14 @@ function New-EnvironmentVariableItems-Object {
             $s
          } -Force
 
-         $obj | Add-Member ScriptMethod UpdateEnvironmentVariable { 
-            $this.Value = $this.ToString()
-            [Environment]::SetEnvironmentVariable($this.Name, $this.Value, $this.Scope)
-         } -Force
+         $obj | Add-Member -NotePropertyName Name -NotePropertyValue $Name
+         $obj | Add-Member -NotePropertyName Scope -NotePropertyValue $Scope
+         $obj | Add-Member -NotePropertyName Separator -NotePropertyValue $Separator
 
+
+     $items = [System.Collections.ArrayList]@()
+        $obj | Add-Member -NotePropertyName items -NotePropertyValue $items 
+ 
         return $obj
     }
 }
@@ -347,18 +396,37 @@ Show index and remove second item from $env:foo variable in the current process
 
 PS> (gevis foo -Separator '#').ShowIndex()
 
+Machine
+0: mat
+1: mop
+
+User
+0: foo
+1: cake
+2: barget-
+3: cup
+
+Process
 0: foo
 1: cake
 2: bar
 3: cup
 
-PS> revi foo -Index 1 -Separator '#' -WhatIf
 
-What if:
+PS> revi foo -in 1 -se '#'
+
+Confirm
+Are you sure you want to perform this action?
+
     Current Value:
         foo#cake#bar#cup
     New value:
         foo#bar#cup
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
+
+Name   Scope Separator items
+----   ----- --------- -----
+foo  Process #         {foo, bar, cup}
 #>
 function Remove-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
@@ -399,10 +467,8 @@ function Remove-EnvironmentVariableItem {
         if ($result -ne $False) {
             $s = GetWhatIf
             if ($PSCmdlet.ShouldProcess($s, '', '')){
-
-                #Set-EnvironmentVariable -Name $Name -value $evis.ToString() -scope $Scope | Out-Null
-                $evis.UpdateEnvironmentVariable()
-
+                #$evis.UpdateEnvironmentVariable()
+                $evis.SetEnvironmentVariable($evis.Name, $evis.ToString(), $evis.Scope)
                 $evis
             }
         } else { 

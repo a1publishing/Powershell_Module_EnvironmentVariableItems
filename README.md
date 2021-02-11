@@ -163,22 +163,42 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 3 --------------------------
 
-Show index and remove second item from $env:foo variable in the current process
+    PS > Show index and remove second item from $env:foo variable in the current process
 
-PS> (gevis foo -Separator '#').ShowIndex()
+    PS> (gevis foo -Separator '#').ShowIndex()
 
-0: foo
-1: cake
-2: bar
-3: cup
+    Machine
+    0: mat
+    1: mop
 
-PS> revi foo -Index 1 -Separator '#' -WhatIf
+    User
+    0: foo
+    1: cake
+    2: bar
+    3: cup
 
-What if:
-    Current Value:
-        foo#cake#bar#cup
-    New value:
-        foo#bar#cup
+    Process
+    0: foo
+    1: cake
+    2: bar
+    3: cup
+
+
+    PS> revi foo -in 1 -se '#'
+
+    Confirm
+    Are you sure you want to perform this action?
+
+        Current Value:
+            foo#cake#bar#cup
+        New value:
+            foo#bar#cup
+
+    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
+
+    Name   Scope Separator items
+    ----   ----- --------- -----
+    foo  Process #         {foo, bar, cup}
 ```
 
 ```
@@ -222,11 +242,24 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
 
     PS > Show index of items in $env:PSModulePath system variable
 
-    PS> (gevis PSModulePath -Scope Machine).ShowIndex()
+    PS> (gevis psmodulepath).showindex()
 
+    Machine
     0: C:\Program Files\WindowsPowerShell\Modules
     1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
     2: N:\lib\pow\mod
+
+    User
+    0: H:\lib\pow\mod
+
+    Process
+    0: C:\Users\michaelf\Documents\PowerShell\Modules
+    1: C:\Program Files\PowerShell\Modules
+    2: c:\program files\powershell\7\Modules
+    3: H:\lib\pow\mod
+    4: C:\Program Files\WindowsPowerShell\Modules
+    5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+    6: N:\lib\pow\mod
 
 ```
 
