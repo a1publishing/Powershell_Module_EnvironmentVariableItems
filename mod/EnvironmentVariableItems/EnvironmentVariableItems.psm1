@@ -112,7 +112,11 @@ PS> Get-EnvironmentVariableItems -Name Path
 Name      : Path
 Scope     : Process
 Separator : ;
-items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem…}
+Value     : C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
+            0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI
+            Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program
+            Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\WINDOWS\System32\Wbem…}
 
 .EXAMPLE
 
@@ -157,6 +161,7 @@ function Get-EnvironmentVariableItems {
         } 
 
         $evis = New-EnvironmentVariableItems-Object $Name $Scope $Separator
+        $evis.Value = $evis.GetEnvironmentVariable($Name, $Scope)
         $evis.SetItems($Name, $Scope, $Separator)
 
         $evis
@@ -167,7 +172,7 @@ function GetWhatIf() {
     @"
 
     Current Value: 
-        $($evis.GetEnvironmentVariable($Name, $Scope))
+        $($evis.Value)
     New value: 
         $($evis.ToString())
 
@@ -219,7 +224,8 @@ function New-EnvironmentVariableItems-Object {
                 [String] $Separator = ';'
             )
             process {
-                $value = $this.GetEnvironmentVariable($Name, $Scope)
+                $value = $this.Value
+
                 if ($null -ne $value) {$value = $value.Trim($Separator)}
         
                 $items = @()
@@ -348,9 +354,10 @@ function New-EnvironmentVariableItems-Object {
          $obj | Add-Member -NotePropertyName Scope -NotePropertyValue $Scope
          $obj | Add-Member -NotePropertyName Separator -NotePropertyValue $Separator
 
+         $obj | Add-Member -NotePropertyName Value -NotePropertyValue $Value
 
      $items = [System.Collections.ArrayList]@()
-        $obj | Add-Member -NotePropertyName items -NotePropertyValue $items 
+        $obj | Add-Member -NotePropertyName Items -NotePropertyValue $items 
  
         return $obj
     }
