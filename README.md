@@ -95,7 +95,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS > Add 'cake' as last item of $env:foo in current process
 
-    PS> aevi foo cake -Separator '#' -whatif
+    PS> aevi foo cake -separator '#' -whatif
     What if:
         Current Value:
             foo#bar#cup
