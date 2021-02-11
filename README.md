@@ -57,9 +57,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
     PS > Add 'C:\foo' to $env:Path variable
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
-
     What if:
-
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
@@ -72,9 +70,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
     PS > Insert 'C:\foo' as first item in $env:Path variable
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index 0 -WhatIf
-
     What if:
-
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
@@ -87,9 +83,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
     PS > Insert 'C:\foo' as second last item in $env:Path variable
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index -2 -WhatIf
-
     What if:
-
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
@@ -102,7 +96,6 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
     PS > Add 'cake' as last item of $env:foo in current process
 
     PS> aevi foo cake -Separator '#' -whatif
-
     What if:
         Current Value:
             foo#bar#cup
@@ -137,7 +130,6 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     PS > Remove 'c:\foo' from $env:Path variable
 
     PS> Remove-EnvironmentVariableItem -Name path -Value 'c:\foo' -Scope User -WhatIf
-
     What if:
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
@@ -151,9 +143,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     PS > Remove last item from $env:Path
 
     PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
-
     What if:
-
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
