@@ -224,7 +224,7 @@ function New-EnvironmentVariableItems-Object {
                 [String] $Separator = ';'
             )
             process {
-                $value = $this.Value
+                $value = $this.GetEnvironmentVariable($Name, $Scope)
 
                 if ($null -ne $value) {$value = $value.Trim($Separator)}
         
@@ -302,7 +302,7 @@ function New-EnvironmentVariableItems-Object {
 
             process {
                 Write-Host 
-                if ($Script:ScopePreDefault -eq $null) {
+                if ($null -eq $Script:ScopePreDefault) {
                     $this.ShowIndexForScope([System.EnvironmentVariableTarget]::Machine)
                     $this.ShowIndexForScope([System.EnvironmentVariableTarget]::User)
                     $this.ShowIndexForScope([System.EnvironmentVariableTarget]::Process)
