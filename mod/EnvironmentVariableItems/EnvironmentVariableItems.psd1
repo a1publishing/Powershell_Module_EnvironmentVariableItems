@@ -14,6 +14,7 @@ PrivateData = @{
         Tags = @('environment', 'variable', 'EnvironmentVariable', 'Windows', 'path', 'scope', 'item', 'split')
         LicenseUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/blob/master/LICENSE'
         ProjectUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems'
+        ReleaseNotes = ""
     } 
 }
 }
