@@ -359,7 +359,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
 
     Name      : foo
-    Scope     : Process
+    Scope     : User
     Separator : #
     Value     : foo#cake#bar#cup
     Items     : {foo, bar, cup}
