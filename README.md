@@ -60,6 +60,7 @@ SYNOPSIS
 
 SYNTAX
     Get-EnvironmentVariableItems [-Name] <String> [[-Scope] {Process | User | Machine}] [[-Separator] <String>] [<CommonParameters>]
+..    
 ```
 
 ```
@@ -123,6 +124,7 @@ SYNOPSIS
 SYNTAX
     Show-EnvironmentVariableItems [-Name] <String> [[-Scope] {Process | User | Machine}] [[-Separator] <String>] [-WhatIf] [-Confirm]
     [<CommonParameters>]
+..
 ```
 ```
     -------------------------- EXAMPLE 1 --------------------------
@@ -213,6 +215,7 @@ SYNOPSIS
 SYNTAX
     Add-EnvironmentVariableItem [-Name] <String> [-Value] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-Index
     <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+..
 ```
 
 ```
@@ -287,6 +290,7 @@ SYNTAX
 
     Remove-EnvironmentVariableItem [-Name] <String> [-Index] <Int32> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
     [-Confirm] [<CommonParameters>]
+..    
 ```
 
 ```
