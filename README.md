@@ -34,7 +34,7 @@ PS> Get-EnvironmentVariableItems -Name PSModulePath
 
 ## Usage
 
-### CmdLets
+### Cmdlets
 ```
 PS> Get-Command *-EnvironmentVariableItem*
 
@@ -344,7 +344,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     Name      : foo
     Scope     : User
     Separator : #
-    Value     : foo#cake#bar#cup
+    Value     : foo#bar#cup
     Items     : {foo, bar, cup}
 
     PS> sevis foo

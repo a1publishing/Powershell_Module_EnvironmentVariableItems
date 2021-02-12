@@ -332,6 +332,7 @@ function New-EnvironmentVariableItems-Object {
             )
             process {
                 [Environment]::SetEnvironmentVariable($Name, $Value, $Scope)
+                $this.Value = $Value
             }
          }
 
@@ -423,7 +424,7 @@ Are you sure you want to perform this action?
 Name      : foo
 Scope     : User
 Separator : #
-Value     : foo#cake#bar#cup
+Value     : foo#bar#cup
 Items     : {foo, bar, cup}
 
 PS> sevis foo
