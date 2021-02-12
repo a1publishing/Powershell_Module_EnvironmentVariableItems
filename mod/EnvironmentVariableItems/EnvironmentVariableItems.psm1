@@ -363,7 +363,7 @@ Removes an environment variable for given Name, Value and Scope (default; 'Proce
 
 .EXAMPLE
 
-Remove 'c:\foo' from $env:Path variable
+Remove 'c:\foo' from $env:Path user environment variable
 
 PS> Remove-EnvironmentVariableItem -Name path -Value 'c:\foo' -Scope User -WhatIf
 
@@ -375,7 +375,7 @@ What if:
 
 .EXAMPLE
 
-Remove last item from $env:Path
+Remove last item from $env:Path user environment variable
 
 PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
 

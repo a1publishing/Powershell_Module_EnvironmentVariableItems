@@ -300,7 +300,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ..
     -------------------------- EXAMPLE 1 --------------------------
 
-    PS > Remove 'c:\foo' from $env:Path variable
+    PS > Remove 'c:\foo' from $env:Path user environment variable
 
     PS> Remove-EnvironmentVariableItem -Name path -Value 'c:\foo' -Scope User -WhatIf
     What if:
@@ -313,7 +313,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 2 --------------------------
 
-    PS > Remove last item from $env:Path
+    PS > Remove last item from $env:Path user environment variable
 
     PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
     What if:
