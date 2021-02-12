@@ -4,7 +4,7 @@ Adds an environment variable for given Name, Value, Scope (default; 'Process') a
 
 .EXAMPLE
 
-Add 'C:\foo' to $env:Path variable
+Add 'C:\foo' user environment variable to $env:Path
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
 What if:

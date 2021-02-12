@@ -223,10 +223,9 @@ SYNTAX
 ```
 PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
-..
     -------------------------- EXAMPLE 1 --------------------------
 
-    PS > Add 'C:\foo' to $env:Path variable
+    PS > Add 'C:\foo' user environment variable to $env:Path
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
     What if:
