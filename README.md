@@ -1,7 +1,7 @@
 # EnvironmentVariableItems
 
 ## Description
-Powershell module with commands to easily add or remove items from 'collection type' Windows environment variables.  For example, adding 'C:\tmp' to $env:Path.
+Powershell module with commands to easily add or remove items from 'collection type' Windows environment variables.  For example, adding 'C:\foo' to $env:Path.
 
 ## Installation
 
@@ -93,8 +93,8 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
     Name      : Path
     Scope     : User
     Separator : ;
-    Value     : C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
-    Items     : {C:\tmp, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
+    Value     : C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+    Items     : {C:\foo, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
 ```
 
 ```
@@ -208,40 +208,40 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
     -------------------------- EXAMPLE 1 --------------------------
 
-    PS > Add 'C:\tmp' to $env:Path user environment variable
+    PS > Add 'C:\foo' to $env:Path user environment variable
 
-    PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope User -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Value C:\foo -Scope User -WhatIf
     What if:
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
-            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;C:\tmp
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;C:\foo
 ```
 
 ```
     -------------------------- EXAMPLE 2 --------------------------
 
-    PS > Insert 'C:\tmp' as first item in $env:Path user environment variable
+    PS > Insert 'C:\foo' as first item in $env:Path user environment variable
 
-    PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope User -Index 0 -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Value C:\foo -Scope User -Index 0 -WhatIf
     What if:
         Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
-            C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+            C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 ```
 
 ```
     -------------------------- EXAMPLE 3 --------------------------
 
-    PS > Insert 'C:\tmp' as second last item in $env:Path process environment variable
+    PS > Insert 'C:\foo' as second last item in $env:Path process environment variable
 
-    PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope Process -Index -2 -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Value C:\foo -Scope Process -Index -2 -WhatIf
     What if:
         Current Value:
             C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
         New value:
-            C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+            C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 ```
 
 ```
@@ -283,12 +283,12 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ..
     -------------------------- EXAMPLE 1 --------------------------
 
-    PS > Remove 'C:\tmp' from $env:Path user environment variable
+    PS > Remove 'C:\foo' from $env:Path user environment variable
 
-    PS> Remove-EnvironmentVariableItem -Name path -Value 'C:\tmp' -Scope User -WhatIf
+    PS> Remove-EnvironmentVariableItem -Name path -Value 'C:\foo' -Scope User -WhatIf
     What if:
         Current Value:
-            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\tmp;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+            C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 ```
