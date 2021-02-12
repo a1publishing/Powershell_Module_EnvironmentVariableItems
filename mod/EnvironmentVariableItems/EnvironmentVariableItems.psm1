@@ -120,26 +120,16 @@ Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\
 
 .EXAMPLE
 
-Show index of items in $env:PSModulePath system variable
+Get user $env:foo EnvironmentVariableItems object
 
-PS> (gevis psmodulepath).showindex()
+PS> Get-EnvironmentVariableItems -Name foo -Scope User -Separator '#'
 
-Machine
-0: C:\Program Files\WindowsPowerShell\Modules
-1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
-2: N:\lib\pow\mod
+Name      : foo
+Scope     : User
+Separator : #
+Value     : foo#cake#bar#cup
+Items     : {foo, cake, bar, cup}
 
-User
-0: H:\lib\pow\mod
-
-Process
-0: C:\Users\michaelf\Documents\PowerShell\Modules
-1: C:\Program Files\PowerShell\Modules
-2: c:\program files\powershell\7\Modules
-3: H:\lib\pow\mod
-4: C:\Program Files\WindowsPowerShell\Modules
-5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
-6: N:\lib\pow\mod
 #>
 function Get-EnvironmentVariableItems {
     [CmdletBinding()]
