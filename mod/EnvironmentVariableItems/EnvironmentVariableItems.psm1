@@ -77,7 +77,7 @@ function Add-EnvironmentVariableItem {
     )    
     process {
 
-        $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
+        $evis = Get-EnvironmentVariableItems -Name $Name -Scope $Scope -Separator $Separator
 
         if ($PSBoundParameters.ContainsKey('Index')) {
             $result = $evis.AddItem($Value, $Index)
@@ -154,7 +154,7 @@ function Get-EnvironmentVariableItems {
     )    
     process {
 
-        # default Scope with Process if $null but also save actual parameter value including if null
+        # preserve user provided Scope value before setting default
         $Script:ScopePreDefault = $Scope
         if ($null -eq $Scope) {
             $Scope = [System.EnvironmentVariableTarget]::Process
@@ -460,7 +460,7 @@ function Remove-EnvironmentVariableItem {
     ) 
     process {
 
-        $evis = Get-EnvironmentVariableItems $Name $Scope $Separator
+        $evis = Get-EnvironmentVariableItems -Name $Name -Scope $Scope -Separator $Separator
 
         if ($PSCmdlet.ParameterSetName -eq 'ByIndex') {
             $result = $evis.RemoveItemByIndex($Index) -ne $False
@@ -483,8 +483,103 @@ function Remove-EnvironmentVariableItem {
     }
 }
 
+<#
+.SYNOPSIS
+Show indexed list of environment variable items for given Name, Scope and Separator (default: ';').  Omitting Scope parameter shows list for all, ie., Machine, User and Process.
+
+.EXAMPLE
+
+Show $env:PSModulePath items
+
+PS> Show-EnvironmentVariableItems PSModulePath
+
+Machine
+0: C:\Program Files\WindowsPowerShell\Modules
+1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+2: N:\lib\pow\mod
+
+User
+0: H:\lib\pow\mod
+
+Process
+0: C:\Users\michaelf\Documents\PowerShell\Modules
+1: C:\Program Files\PowerShell\Modules
+2: c:\program files\powershell\7\Modules
+3: H:\lib\pow\mod
+4: C:\Program Files\WindowsPowerShell\Modules
+5: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+6: N:\lib\pow\mod
+
+.EXAMPLE
+
+Show PSModulePath system variable items
+
+PS> sevis psmodulepath -sc machine
+
+Machine
+0: C:\Program Files\WindowsPowerShell\Modules
+1: C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+2: N:\lib\pow\mod
+
+.EXAMPLE
+
+Show system, user and process for any environment variable (regardless of whether there's a separator), eg., for $env:TMP
+
+PS> sevis tmp
+
+Machine
+0: C:\WINDOWS\TEMP
+
+User
+0: C:\Users\michaelf\AppData\Local\Temp
+
+Process
+0: C:\Users\michaelf\AppData\Local\Temp
+
+.EXAMPLE 
+
+Show 'unseparated' system, user and process environment variables, eg., for $env:Path
+
+PS> sevis path -se '0'
+
+Machine
+0: C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
+1: \;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin
+
+User
+0: c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+
+Process
+0: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
+1: \;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+#>
+function Show-EnvironmentVariableItems {
+    [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
+    param (
+        [Parameter(Mandatory)]
+            [String] $Name,
+        [Parameter()]
+            #[System.EnvironmentVariableTarget] $Scope = [System.EnvironmentVariableTarget]::Process,
+            [System.EnvironmentVariableTarget] $Scope,
+        [Parameter()]
+            [String] $Separator = ';'
+    )    
+    process {
+
+        if ($null -eq $Scope) {
+            $evis = Get-EnvironmentVariableItems -Name $Name -Separator $Separator
+        } else {
+            $evis = Get-EnvironmentVariableItems -Name $Name -Scope $Scope -Separator $Separator
+        }
+
+        'sevis'
+        $evis.ShowIndex()
+    }
+}
+
 New-Alias -Name aevi -Value Add-EnvironmentVariableItem
 New-Alias -Name gevis -Value Get-EnvironmentVariableItems
 New-Alias -Name revi -Value Remove-EnvironmentVariableItem
+New-Alias -Name sevis -Value Show-EnvironmentVariableItems
 
 Export-ModuleMember -Alias * -Function *
