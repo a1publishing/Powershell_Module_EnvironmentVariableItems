@@ -4,7 +4,7 @@ Adds an environment variable for given Name, Value, Scope (default; 'Process') a
 
 .EXAMPLE
 
-Add 'C:\foo' item to $env:Path user environment variable
+Add 'C:\foo' to $env:Path user environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
 What if:
@@ -39,15 +39,7 @@ What if:
 
 Add 'cake' as last item of $env:foo in current process
 
-PS> Get-EnvironmentVariable -Name foo -Scope User
-
-Name            : foo
-Value           : foo#bar#cup
-Scope           : User
-ValueType       : String
-BeforeExpansion :
-
-PS> aevi foo cake -separator '#' -whatif
+PS> aevi foo cake -se '#' -wh
 What if:
     Current Value:
         foo#bar#cup

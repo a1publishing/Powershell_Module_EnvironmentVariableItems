@@ -225,7 +225,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
     -------------------------- EXAMPLE 1 --------------------------
 
-    PS > Add 'C:\foo' item to $env:Path user environment variable
+    PS > Add 'C:\foo' to $env:Path user environment variable
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
     What if:
@@ -266,7 +266,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS > Add 'cake' as last item of $env:foo in current process
 
-    PS> aevi foo cake -separator '#' -whatif
+    PS> aevi foo cake -se '#' -wh
     What if:
         Current Value:
             foo#bar#cup
