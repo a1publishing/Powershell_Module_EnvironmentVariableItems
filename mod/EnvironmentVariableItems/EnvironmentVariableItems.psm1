@@ -534,7 +534,7 @@ Machine
 
 .EXAMPLE
 
-Show system, user and process for any environment variable (regardless of whether there's a separator), eg., for $env:TMP
+Show system, user and process items for $env:TMP environment variable
 
 PS> Show-EnvironmentVariableItems TMP
 
@@ -549,7 +549,7 @@ Process
 
 .EXAMPLE 
 
-Show 'unseparated' system, user and process environment variables, eg., for $env:Path
+Show 'unseparated' system, user and process $env:Path environment variables
 
 PS> sevis path -se ';;'
 
