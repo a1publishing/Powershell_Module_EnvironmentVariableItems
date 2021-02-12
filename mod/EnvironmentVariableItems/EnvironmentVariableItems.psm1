@@ -120,9 +120,21 @@ Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\
 
 .EXAMPLE
 
+Get user $env:Path EnvironmentVariableItems object
+
+PS> Get-EnvironmentVariableItems -Name Path -Scope User
+
+Name      : Path
+Scope     : User
+Separator : ;
+Value     : c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+Items     : {c:\foo, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
+
+.EXAMPLE
+
 Get user $env:foo EnvironmentVariableItems object
 
-PS> Get-EnvironmentVariableItems -Name foo -Scope User -Separator '#'
+PS> gevis foo -sc user -se '#'
 
 Name      : foo
 Scope     : User
@@ -504,7 +516,7 @@ Process
 
 Show PSModulePath system variable items
 
-PS> sevis psmodulepath -sc machine
+PS> Show-EnvironmentVariableItems PSModulePath -Scope Machine
 
 Machine
 0: C:\Program Files\WindowsPowerShell\Modules
@@ -515,7 +527,7 @@ Machine
 
 Show system, user and process for any environment variable (regardless of whether there's a separator), eg., for $env:TMP
 
-PS> sevis tmp
+PS> Show-EnvironmentVariableItems TMP
 
 Machine
 0: C:\WINDOWS\TEMP
@@ -530,18 +542,16 @@ Process
 
 Show 'unseparated' system, user and process environment variables, eg., for $env:Path
 
-PS> sevis path -se '0'
+PS> sevis path -se ';;'
 
 Machine
-0: C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
-1: \;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin
+0: C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin
 
 User
 0: c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 
 Process
-0: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
-1: \;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+0: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 #>
 function Show-EnvironmentVariableItems {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
