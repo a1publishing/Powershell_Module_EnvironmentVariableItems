@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Adds an environment variable for given Name, Value, Scope (default; 'Process') and Separator (';') and optional Index.
+Adds an environment variable item for given Name, Value, Scope (default; 'Process') and Separator (';') and optional Index.
 
 .EXAMPLE
 
