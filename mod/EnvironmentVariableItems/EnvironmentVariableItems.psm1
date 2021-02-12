@@ -4,36 +4,36 @@ Adds an environment variable for given Name, Value, Scope (default; 'Process') a
 
 .EXAMPLE
 
-Add 'C:\foo' to $env:Path user environment variable
+Add 'C:\tmp' to $env:Path user environment variable
 
-PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -WhatIf
+PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope User -WhatIf
 What if:
     Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
-        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;c:\foo
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;C:\tmp
 
 .EXAMPLE
 
-Insert 'C:\foo' as first item in $env:Path user environment variable
+Insert 'C:\tmp' as first item in $env:Path user environment variable
 
-PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index 0 -WhatIf
+PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope User -Index 0 -WhatIf
 What if:
     Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
-        c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 
 .EXAMPLE
 
-Insert 'C:\foo' as second last item in $env:Path user environment variable
+Insert 'C:\tmp' as second last item in $env:Path user environment variable
 
-PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index -2 -WhatIf
+PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope User -Index -2 -WhatIf
 What if:
     Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
-        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\tmp;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 
 .EXAMPLE
 
@@ -119,8 +119,8 @@ PS> Get-EnvironmentVariableItems -Name Path -Scope User
 Name      : Path
 Scope     : User
 Separator : ;
-Value     : c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
-Items     : {c:\foo, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
+Value     : C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+Items     : {C:\tmp, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
 
 .EXAMPLE
 
@@ -363,13 +363,13 @@ Removes an environment variable for given Name, Value and Scope (default; 'Proce
 
 .EXAMPLE
 
-Remove 'c:\foo' from $env:Path user environment variable
+Remove 'C:\tmp' from $env:Path user environment variable
 
-PS> Remove-EnvironmentVariableItem -Name path -Value 'c:\foo' -Scope User -WhatIf
+PS> Remove-EnvironmentVariableItem -Name path -Value 'C:\tmp' -Scope User -WhatIf
 
 What if:
     Current Value:
-        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;c:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
+        C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\tmp;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 
@@ -557,10 +557,10 @@ Machine
 0: C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin
 
 User
-0: c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+0: C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 
 Process
-0: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;c:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+0: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 #>
 function Show-EnvironmentVariableItems {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
