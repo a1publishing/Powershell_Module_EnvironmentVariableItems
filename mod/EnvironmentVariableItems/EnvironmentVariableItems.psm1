@@ -440,7 +440,8 @@ Process
 PS> $env:foo
 foo#cake#bar#cup
 
-
+PS> [Environment]::GetEnvironmentVariable('foo', 'User')
+foo#bar#cup
 #>
 function Remove-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]

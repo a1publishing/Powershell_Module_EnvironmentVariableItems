@@ -377,6 +377,10 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     PS> $env:foo
     foo#cake#bar#cup
+
+    PS> [Environment]::GetEnvironmentVariable('foo', 'User')
+    foo#bar#cup
+
 ```
 
 
