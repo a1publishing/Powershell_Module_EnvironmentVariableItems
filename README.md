@@ -326,13 +326,20 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 3 --------------------------
 
-    PS > Show index and remove second item from $env:foo variable in the current process
+    PS > Remove second item from $env:foo user environment variable
 
-    PS> (gevis foo -se '#').ShowIndex()
+    PS> sevis foo
 
     Machine
-    0: mat
-    1: mop
+    0: mat#mop
+
+    User
+    0: foo#cake#bar#cup
+
+    Process
+    0: foo#cake#bar#cup
+
+    PS> sevis foo -sc user -se '#'
 
     User
     0: foo
@@ -340,14 +347,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     2: bar
     3: cup
 
-    Process
-    0: foo
-    1: cake
-    2: bar
-    3: cup
-
-
-    PS> revi foo -in 1 -se '#'
+    PS> revi foo -in 1 -sc user -se '#'
 
     Confirm
     Are you sure you want to perform this action?
@@ -356,7 +356,6 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
             foo#cake#bar#cup
         New value:
             foo#bar#cup
-
     [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
 
     Name      : foo
@@ -364,6 +363,20 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     Separator : #
     Value     : foo#cake#bar#cup
     Items     : {foo, bar, cup}
+
+    PS> sevis foo
+
+    Machine
+    0: mat#mop
+
+    User
+    0: foo#bar#cup
+
+    Process
+    0: foo#cake#bar#cup
+
+    PS> $env:foo
+    foo#cake#bar#cup
 ```
 
 

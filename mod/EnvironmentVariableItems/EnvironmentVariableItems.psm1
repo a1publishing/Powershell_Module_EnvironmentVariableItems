@@ -388,28 +388,28 @@ What if:
 
 .EXAMPLE
 
-Show index and remove second item from $env:foo variable in the current process
+Remove second item from $env:foo user environment variable
 
-PS> (gevis foo -se '#').ShowIndex()
+PS> sevis foo
 
 Machine
-0: mat
-1: mop
+0: mat#mop
 
 User
-0: foo
-1: cake
-2: barget-
-3: cup
+0: foo#cake#bar#cup
 
 Process
+0: foo#cake#bar#cup
+
+PS> sevis foo -sc user -se '#'
+
+User
 0: foo
 1: cake
 2: bar
 3: cup
 
-
-PS> revi foo -in 1 -se '#'
+PS> revi foo -in 1 -sc user -se '#'
 
 Confirm
 Are you sure you want to perform this action?
@@ -425,6 +425,22 @@ Scope     : Process
 Separator : #
 Value     : foo#cake#bar#cup
 Items     : {foo, bar, cup}
+
+PS> sevis foo
+
+Machine
+0: mat#mop
+
+User
+0: foo#bar#cup
+
+Process
+0: foo#cake#bar#cup
+
+PS> $env:foo
+foo#cake#bar#cup
+
+
 #>
 function Remove-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
