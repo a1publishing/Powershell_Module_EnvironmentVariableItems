@@ -264,14 +264,14 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 4 --------------------------
 
-    PS > Add 'cake' as last item of $env:foo in current process
+    PS > Add 'cake' as second item of $env:foo user environment variable
 
-    PS> aevi foo cake -se '#' -wh
+    PS> aevi foo cake -sc user -in 1 -se '#' -wh
     What if:
         Current Value:
             foo#bar#cup
         New value:
-            foo#bar#cup#cake
+            foo#cake#bar#cup
 ```
 
 ### Remove-EnvironmentVariableItem
