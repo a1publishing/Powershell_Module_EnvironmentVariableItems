@@ -26,7 +26,7 @@ What if:
 
 .EXAMPLE
 
-Insert 'C:\tmp' as second last item in $env:Path user environment variable
+Insert 'C:\tmp' as second last item in $env:Path process environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value C:\tmp -Scope Process -Index -2 -WhatIf
 What if:
