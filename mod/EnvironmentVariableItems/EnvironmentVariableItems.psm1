@@ -359,7 +359,7 @@ function New-EnvironmentVariableItems-Object {
 
 <#
 .SYNOPSIS
-Removes an environment variable for given Name, Value and Scope (default; 'Process') and Separator (';') and optional Index.
+Removes an environment variable item for given Name, Value and Scope (default; 'Process') and Separator (';') and optional Index.
 
 .EXAMPLE
 

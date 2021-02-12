@@ -282,7 +282,7 @@ NAME
     Remove-EnvironmentVariableItem
 
 SYNOPSIS
-    Removes an environment variable for a given Name, Value or Index, Scope (default: 'Process') and Separator (';').
+    Removes an environment variable item for a given Name, Value or Index, Scope (default: 'Process') and Separator (';').
 
 
 SYNTAX
