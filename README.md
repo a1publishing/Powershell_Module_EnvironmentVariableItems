@@ -63,9 +63,9 @@ SYNTAX
 ..    
 ```
 
+#### Examples
 ```
 PS> Get-Help Get-EnvironmentVariableItems -Examples
-..
 ..
     -------------------------- EXAMPLE 1 --------------------------
 
@@ -126,7 +126,11 @@ SYNTAX
     [<CommonParameters>]
 ..
 ```
+
+#### Examples
 ```
+PS> Get-Help Show-EnvironmentVariableItems -Examples
+..
     -------------------------- EXAMPLE 1 --------------------------
 
     PS > Show $env:PSModulePath items
@@ -218,6 +222,7 @@ SYNTAX
 ..
 ```
 
+#### Examples
 ```
 PS> Get-Help Add-EnvironmentVariableItem -Examples
 ..
@@ -293,9 +298,9 @@ SYNTAX
 ..    
 ```
 
+#### Examples
 ```
 PS> Get-Help Remove-EnvironmentVariableItem -Examples
-..
 ..
     -------------------------- EXAMPLE 1 --------------------------
 
