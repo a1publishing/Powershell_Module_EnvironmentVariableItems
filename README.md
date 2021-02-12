@@ -238,7 +238,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 2 --------------------------
 
-    PS > Insert 'C:\foo' as first item in $env:Path variable
+    PS > Insert 'C:\foo' as first item in $env:Path user environment variable
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index 0 -WhatIf
     What if:
@@ -251,7 +251,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 ```
     -------------------------- EXAMPLE 3 --------------------------
 
-    PS > Insert 'C:\foo' as second last item in $env:Path variable
+    PS > Insert 'C:\foo' as second last item in $env:Path user environment variable
 
     PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index -2 -WhatIf
     What if:

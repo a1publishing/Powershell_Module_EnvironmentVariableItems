@@ -15,7 +15,7 @@ What if:
 
 .EXAMPLE
 
-Insert 'C:\foo' as first item in $env:Path variable
+Insert 'C:\foo' as first item in $env:Path user environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index 0 -WhatIf
 What if:
@@ -26,7 +26,7 @@ What if:
 
 .EXAMPLE
 
-Insert 'C:\foo' as second last item in $env:Path variable
+Insert 'C:\foo' as second last item in $env:Path user environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Value c:\foo -Scope User -Index -2 -WhatIf
 What if:
