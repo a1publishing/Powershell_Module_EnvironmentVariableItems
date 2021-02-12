@@ -34,7 +34,7 @@ PS> Get-EnvironmentVariableItems -Name PSModulePath
 
 ## Usage
 
-### Commands
+### CmdLets
 ```
 PS> Get-Command *-EnvironmentVariableItem*
 
