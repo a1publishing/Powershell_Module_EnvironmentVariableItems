@@ -93,7 +93,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
     Name      : Path
     Scope     : User
     Separator : ;
-    Value	  : C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+    Value     : C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
     Items     : {C:\foo, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
 ```
 
@@ -107,7 +107,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
     Name      : foo
     Scope     : User
     Separator : #
-    Value	  : foo#cake#bar#cup
+    Value     : foo#cake#bar#cup
     Items     : {foo, cake, bar, cup}
 ```
 
@@ -344,7 +344,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     Name      : foo
     Scope     : User
     Separator : #
-    Value	  : foo#bar#cup
+    Value     : foo#bar#cup
     Items     : {foo, bar, cup}
 
     PS> sevis foo
