@@ -567,7 +567,6 @@ function Show-EnvironmentVariableItems {
             $evis = Get-EnvironmentVariableItems -Name $Name -Scope $Scope -Separator $Separator
         }
 
-        'sevis'
         $evis.ShowIndex()
     }
 }
