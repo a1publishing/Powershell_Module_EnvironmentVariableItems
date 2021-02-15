@@ -8,7 +8,7 @@ Add 'C:\tmp' to $env:Path user environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Item C:\tmp -Scope User -WhatIf
 What if:
-    New Value:
+    Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;C:\tmp
@@ -19,7 +19,7 @@ Insert 'C:\tmp' as first item in $env:Path user environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Item C:\tmp -Scope User -Index 0 -WhatIf
 What if:
-    New Value:
+    Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New Value:
         C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
@@ -30,7 +30,7 @@ Insert 'C:\tmp' as second last item in $env:Path process environment variable
 
 PS> Add-EnvironmentVariableItem -Name path -Item C:\tmp -Scope Process -Index -2 -WhatIf
 What if:
-    New Value:
+    Current Value:
         C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
     New Value:
         C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
@@ -41,7 +41,7 @@ PS > Add 'cake' as second item of $env:foo user environment variable
 
 PS> aevi foo cake -sc user -in 1 -se '#' -wh
 What if:
-    New Value:
+    Current Value:
         foo#bar#cup
     New Value:
         foo#cake#bar#cup
@@ -165,7 +165,7 @@ function Get-EnvironmentVariableItems {
 function GetWhatIf() {
     @"
 
-    New Value: 
+    Current Value: 
         $($evis.Value)
     New Value: 
         $($evis.ToString())
@@ -369,7 +369,7 @@ Remove 'C:\tmp' from $env:Path user environment variable
 PS> Remove-EnvironmentVariableItem -Name path -Item 'C:\tmp' -Scope User -WhatIf
 
 What if:
-    New Value:
+    Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\tmp;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
@@ -382,7 +382,7 @@ PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
 
 What if:
 
-    New Value:
+    Current Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
     New Value:
         C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
@@ -415,7 +415,7 @@ PS> revi foo -in 1 -sc user -se '#'
 Confirm
 Are you sure you want to perform this action?
 
-    New Value:
+    Current Value:
         foo#cake#bar#cup
     New Value:
         foo#bar#cup

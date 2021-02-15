@@ -212,7 +212,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS> Add-EnvironmentVariableItem -Name path -Item C:\foo -Scope User -WhatIf
     What if:
-        New Value:
+        Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;C:\foo
@@ -225,7 +225,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS> Add-EnvironmentVariableItem -Name path -Item C:\foo -Scope User -Index 0 -WhatIf
     What if:
-        New Value:
+        Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New Value:
             C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
@@ -238,7 +238,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS> Add-EnvironmentVariableItem -Name path -Item C:\foo -Scope Process -Index -2 -WhatIf
     What if:
-        New Value:
+        Current Value:
             C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
         New Value:
             C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
@@ -251,7 +251,7 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS> aevi foo cake -sc user -in 1 -se '#' -wh
     What if:
-        New Value:
+        Current Value:
             foo#bar#cup
         New Value:
             foo#cake#bar#cup
@@ -287,7 +287,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     PS> Remove-EnvironmentVariableItem -Name path -Item 'C:\foo' -Scope User -WhatIf
     What if:
-        New Value:
+        Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
@@ -300,7 +300,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
     What if:
-        New Value:
+        Current Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
         New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
@@ -335,7 +335,7 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     Confirm
     Are you sure you want to perform this action?
 
-        New Value:
+        Current Value:
             foo#cake#bar#cup
         New Value:
             foo#bar#cup
