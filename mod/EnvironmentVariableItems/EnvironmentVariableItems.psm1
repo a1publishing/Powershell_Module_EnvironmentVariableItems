@@ -265,7 +265,7 @@ function New-EnvironmentVariableItems-Object {
             }
          } -Force
         
-         $obj | Add-Member ScriptMethod RemoveItemByValue { 
+         $obj | Add-Member ScriptMethod RemoveItemByItem { 
             param (
                 [String] $Item
             )    
@@ -455,7 +455,7 @@ function Remove-EnvironmentVariableItem {
             [String] $Name,        
         [Parameter(
             Mandatory,
-            ParameterSetName = 'ByValue',
+            ParameterSetName = 'ByItem',
             Position = 1 
         )] 
             [String] $Item,        
