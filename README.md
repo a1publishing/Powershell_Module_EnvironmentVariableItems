@@ -76,7 +76,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
     Name      : Path
     Scope     : Process
     Separator : ;
-    Value     : C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
+    Va_lue	: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
                 0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI
                 Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program
                 Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
@@ -93,7 +93,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
     Name      : Path
     Scope     : User
     Separator : ;
-    Value     : C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+    Va_lue	: C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
     Items     : {C:\foo, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
 ```
 
@@ -107,7 +107,7 @@ PS> Get-Help Get-EnvironmentVariableItems -Examples
     Name      : foo
     Scope     : User
     Separator : #
-    Value     : foo#cake#bar#cup
+    Va_lue	: foo#cake#bar#cup
     Items     : {foo, cake, bar, cup}
 ```
 
@@ -193,11 +193,11 @@ NAME
     Add-EnvironmentVariableItem
 
 SYNOPSIS
-    Adds an environment variable item for given Name, Value, Scope (default: 'Process') and Separator (';') and optional Index.
+    Adds an environment variable item for given Name, Item, Scope (default: 'Process') and Separator (';') and optional Index.
 
 
 SYNTAX
-    Add-EnvironmentVariableItem [-Name] <String> [-Value] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-Index
+    Add-EnvironmentVariableItem [-Name] <String> [-Item] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-Index
     <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ..
 ```
@@ -210,11 +210,11 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS > Add 'C:\foo' to $env:Path user environment variable
 
-    PS> Add-EnvironmentVariableItem -Name path -Value C:\foo -Scope User -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Item C:\foo -Scope User -WhatIf
     What if:
-        Current Value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
-        New value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin;C:\foo
 ```
 
@@ -223,11 +223,11 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS > Insert 'C:\foo' as first item in $env:Path user environment variable
 
-    PS> Add-EnvironmentVariableItem -Name path -Value C:\foo -Scope User -Index 0 -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Item C:\foo -Scope User -Index 0 -WhatIf
     What if:
-        Current Value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
-        New value:
+        New Value:
             C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 ```
 
@@ -236,11 +236,11 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS > Insert 'C:\foo' as second last item in $env:Path process environment variable
 
-    PS> Add-EnvironmentVariableItem -Name path -Value C:\foo -Scope Process -Index -2 -WhatIf
+    PS> Add-EnvironmentVariableItem -Name path -Item C:\foo -Scope Process -Index -2 -WhatIf
     What if:
-        Current Value:
+        New Value:
             C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
-        New value:
+        New Value:
             C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\foo;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 ```
 
@@ -251,9 +251,9 @@ PS> Get-Help Add-EnvironmentVariableItem -Examples
 
     PS> aevi foo cake -sc user -in 1 -se '#' -wh
     What if:
-        Current Value:
+        New Value:
             foo#bar#cup
-        New value:
+        New Value:
             foo#cake#bar#cup
 ```
 
@@ -265,11 +265,11 @@ NAME
     Remove-EnvironmentVariableItem
 
 SYNOPSIS
-    Removes an environment variable item for a given Name, Value or Index, Scope (default: 'Process') and Separator (';').
+    Removes an environment variable item for a given Name, Item or Index, Scope (default: 'Process') and Separator (';').
 
 
 SYNTAX
-    Remove-EnvironmentVariableItem [-Name] <String> [-Value] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
+    Remove-EnvironmentVariableItem [-Name] <String> [-Item] <String> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
     [-Confirm] [<CommonParameters>]
 
     Remove-EnvironmentVariableItem [-Name] <String> [-Index] <Int32> [-Scope {Process | User | Machine}] [-Separator <String>] [-WhatIf]
@@ -285,11 +285,11 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     PS > Remove 'C:\foo' from $env:Path user environment variable
 
-    PS> Remove-EnvironmentVariableItem -Name path -Value 'C:\foo' -Scope User -WhatIf
+    PS> Remove-EnvironmentVariableItem -Name path -Item 'C:\foo' -Scope User -WhatIf
     What if:
-        Current Value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\foo;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
-        New value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
 ```
 
@@ -300,9 +300,9 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
 
     PS> Remove-EnvironmentVariableItem -Name path -Scope User -Index -1 -WhatIf
     What if:
-        Current Value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps;C:\Users\michaelf\AppData\Local\Programs\Microsoft VS Code\bin
-        New value:
+        New Value:
             C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 ```
 
@@ -335,16 +335,16 @@ PS> Get-Help Remove-EnvironmentVariableItem -Examples
     Confirm
     Are you sure you want to perform this action?
 
-        Current Value:
+        New Value:
             foo#cake#bar#cup
-        New value:
+        New Value:
             foo#bar#cup
     [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): y
 
     Name      : foo
     Scope     : User
     Separator : #
-    Value     : foo#bar#cup
+    Va_lue	: foo#bar#cup
     Items     : {foo, bar, cup}
 
     PS> sevis foo
