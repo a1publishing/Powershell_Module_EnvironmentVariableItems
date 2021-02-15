@@ -1,6 +1,6 @@
 @{
 RootModule = 'EnvironmentVariableItems.psm1'
-ModuleVersion = '1.4.2'
+ModuleVersion = '1.4.3'
 GUID = 'f5ed8644-7f61-49cb-b4e5-fe24e5e85262'
 Author = 'a1publishing\michaelf'
 CompanyName = 'a1publishing.com'
@@ -14,7 +14,7 @@ PrivateData = @{
         Tags = @('environment', 'variable', 'EnvironmentVariable', 'Windows', 'path', 'scope', 'item', 'split')
         LicenseUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/blob/master/LICENSE'
         ProjectUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems'
-        ReleaseNotes = "1.4.2: bugfix: returned EnvironmentVariableItems object's Value property wasn't being updated after a SetEnvironmentVariable invocation"
+        ReleaseNotes = "1.4.3: "
     } 
 }
 }
