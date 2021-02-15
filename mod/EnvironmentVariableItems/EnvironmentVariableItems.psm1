@@ -2,6 +2,21 @@
 .SYNOPSIS
 Adds an environment variable item for given Name, Item, Scope (default; 'Process') and Separator (';') and optional Index.
 
+.PARAMETER Name
+Environment variable name
+
+.PARAMETER Item
+An item of an environment variable (eg., 'C:\foo' in $env:Path of 'C:\foo;C:\bar')
+
+.PARAMETER Scope
+Environment variable scope  (.NET enum System.EnvironmentVariableTarget)
+
+.PARAMETER Separator
+Environment variable item separator (eg., ';' in $env:Path of 'C:\foo;C:\bar')
+
+.PARAMETER Index
+Item index position (negative values work backwards through collection,-1 being the last item)
+
 .EXAMPLE
 
 Add 'C:\tmp' to $env:Path user environment variable
@@ -45,6 +60,12 @@ What if:
         foo#bar#cup
     New Value:
         foo#cake#bar#cup
+
+.INPUTS
+
+.OUTPUTS
+
+
 #>
 function Add-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
@@ -94,6 +115,15 @@ function Add-EnvironmentVariableItem {
 <#
 .SYNOPSIS
 Gets an EnvironmentVariableItems object for a given Name, Scope (default; 'Process') and Separator (';').
+
+.PARAMETER Name
+Environment variable name
+
+.PARAMETER Scope
+Environment variable scope  (.NET enum System.EnvironmentVariableTarget)
+
+.PARAMETER Separator
+Environment variable item separator (eg., ';' in $env:Path of 'C:\foo;C:\bar')
 
 .EXAMPLE
 
@@ -360,7 +390,22 @@ function New-EnvironmentVariableItems-Object {
 
 <#
 .SYNOPSIS
-Removes an environment variable item for given Name, Item and Scope (default; 'Process') and Separator (';') and optional Index.
+Removes an environment variable item for given Name, Item or Index, and Scope (default; 'Process') and Separator (';').
+
+.PARAMETER Name
+Environment variable name
+
+.PARAMETER Item
+An item of an environment variable (eg., 'C:\foo' in $env:Path of 'C:\foo;C:\bar')
+
+.PARAMETER Scope
+Environment variable scope  (.NET enum System.EnvironmentVariableTarget)
+
+.PARAMETER Separator
+Environment variable item separator (eg., ';' in $env:Path of 'C:\foo;C:\bar')
+
+.PARAMETER Index
+Item index position (negative values work backwards through collection,-1 being the last item)
 
 .EXAMPLE
 
@@ -498,6 +543,15 @@ function Remove-EnvironmentVariableItem {
 <#
 .SYNOPSIS
 Show indexed list of environment variable items for given Name, Scope and Separator (default: ';').  Omitting Scope parameter shows list for all, ie., Machine, User and Process.
+
+.PARAMETER Name
+Environment variable name
+
+.PARAMETER Scope
+Environment variable scope  (.NET enum System.EnvironmentVariableTarget)
+
+.PARAMETER Separator
+Environment variable item separator (eg., ';' in $env:Path of 'C:\foo;C:\bar')
 
 .EXAMPLE
 

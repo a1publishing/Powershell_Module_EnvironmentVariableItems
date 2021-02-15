@@ -1,6 +1,6 @@
 @{
 RootModule = 'EnvironmentVariableItems.psm1'
-ModuleVersion = '1.4.3'
+ModuleVersion = '1.4.4'
 GUID = 'f5ed8644-7f61-49cb-b4e5-fe24e5e85262'
 Author = 'a1publishing\michaelf'
 CompanyName = 'a1publishing.com'
@@ -14,7 +14,7 @@ PrivateData = @{
         Tags = @('environment', 'variable', 'EnvironmentVariable', 'Windows', 'path', 'scope', 'item', 'split')
         LicenseUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/blob/master/LICENSE'
         ProjectUri = 'https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems'
-        ReleaseNotes = "1.4.3: Renamed parameter 'Value' to 'Item' in each cmdlet"
+        ReleaseNotes = "1.4.4: Added .PARAMETER help comments"
     } 
 }
 }
