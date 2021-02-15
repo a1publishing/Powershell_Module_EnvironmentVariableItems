@@ -104,7 +104,7 @@ PS> Get-EnvironmentVariableItems -Name Path
 Name      : Path
 Scope     : Process
 Separator : ;
-Va_lue	: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
+Value	: C:\Program Files\PowerShell\7;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.
             0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI
             Technologies\ATI.ACE\Core-Static;C:\ProgramData\chocolatey\bin;C:\Program Files\PowerShell\7\;C:\Program
             Files\Git\cmd;C:\Program Files\Microsoft VS Code\bin;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
@@ -119,7 +119,7 @@ PS> Get-EnvironmentVariableItems -Name Path -Scope User
 Name      : Path
 Scope     : User
 Separator : ;
-Va_lue	: C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
+Value	: C:\tmp;C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps
 Items     : {C:\tmp, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
 
 .EXAMPLE
@@ -131,7 +131,7 @@ PS> gevis foo -sc user -se '#'
 Name      : foo
 Scope     : User
 Separator : #
-Va_lue	: foo#cake#bar#cup
+Value	: foo#cake#bar#cup
 Items     : {foo, cake, bar, cup}
 
 #>
@@ -424,7 +424,7 @@ Are you sure you want to perform this action?
 Name      : foo
 Scope     : User
 Separator : #
-Va_lue	: foo#bar#cup
+Value	: foo#bar#cup
 Items     : {foo, bar, cup}
 
 PS> sevis foo
