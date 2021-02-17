@@ -64,7 +64,7 @@ What if:
 .INPUTS
 
 .OUTPUTS
-
+EnvironmentVariableItems PSCustomObject
 
 #>
 function Add-EnvironmentVariableItem {
@@ -114,7 +114,7 @@ function Add-EnvironmentVariableItem {
 
 <#
 .SYNOPSIS
-Gets an EnvironmentVariableItems object for a given Name, Scope (default; 'Process') and Separator (';').
+Gets an EnvironmentVariableItems PSCustomObject for a given Name, Scope (default; 'Process') and Separator (';').
 
 .PARAMETER Name
 Environment variable name
@@ -127,7 +127,7 @@ Environment variable item separator (eg., ';' in $env:Path of 'C:\foo;C:\bar')
 
 .EXAMPLE
 
-Get current process $env:Path EnvironmentVariableItems object
+Get current process $env:Path EnvironmentVariableItems PSCustomObject
 
 PS> Get-EnvironmentVariableItems -Name Path 
 
@@ -142,7 +142,7 @@ Items     : {C:\Program Files\PowerShell\7, C:\WINDOWS\system32, C:\WINDOWS, C:\
 
 .EXAMPLE
 
-Get user $env:Path EnvironmentVariableItems object
+Get user $env:Path EnvironmentVariableItems PSCustomObject
 
 PS> Get-EnvironmentVariableItems -Name Path -Scope User
 
@@ -154,7 +154,7 @@ Items     : {C:\tmp, C:\Users\michaelf\AppData\Local\Microsoft\WindowsApps}
 
 .EXAMPLE
 
-Get user $env:foo EnvironmentVariableItems object
+Get user $env:foo EnvironmentVariableItems PSCustomObject
 
 PS> gevis foo -sc user -se '#'
 
@@ -164,6 +164,10 @@ Separator : #
 Value     : foo#cake#bar#cup
 Items     : {foo, cake, bar, cup}
 
+.INPUTS
+
+.OUTPUTS
+EnvironmentVariableItems PSCustomObject
 #>
 function Get-EnvironmentVariableItems {
     [CmdletBinding()]
@@ -488,6 +492,11 @@ foo#cake#bar#cup
 
 PS> [Environment]::GetEnvironmentVariable('foo', 'User')
 foo#bar#cup
+
+.INPUTS
+
+.OUTPUTS
+EnvironmentVariableItems PSCustomObject
 #>
 function Remove-EnvironmentVariableItem {
     [CmdletBinding(SupportsShouldProcess=$true, ConfirmImpact='High')]
