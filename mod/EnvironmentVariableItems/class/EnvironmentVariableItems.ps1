@@ -1,0 +1,4 @@
+class EnvironmentVariableItems {
+    $x;
+    $y;
+}
