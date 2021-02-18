@@ -1,4 +1,5 @@
 class EnvironmentVariableItems {
-    $x;
-    $y;
+    $Name;
+    $Scope;
+    $Separator;
 }
