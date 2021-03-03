@@ -2,13 +2,6 @@
 
 ## Build (beta/work in progress)
 
-### Invoke-Build additional parameter
-#### PesterOutput
-Passed to Invoke-Pester Output parameter in build script, eg.;
-```
-PS> 
-Invoke-Build TestCode -File .\EnvironmentVariableItems.build.ps1 -PesterOutput Detailed 
-```
 
 ### Testing, eg.;
 ```
@@ -21,6 +14,16 @@ Invoke-Build TestCode -File .\EnvironmentVariableItems.build.ps1
 PS> 
 Invoke-Build -File .\EnvironmentVariableItems.build.ps1
 ```
+
+### Invoke-Build additional parameter
+
+#### PesterOutput
+Passed to Invoke-Pester Output parameter in build script, eg.;
+```
+PS> 
+Invoke-Build TestCode -File .\EnvironmentVariableItems.build.ps1 -PesterOutput Detailed 
+```
+
 
 
 ## NOTES/TODO: 
