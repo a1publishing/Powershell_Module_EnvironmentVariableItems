@@ -1,7 +1,7 @@
 #Requires -Modules @{ModuleName='InvokeBuild';ModuleVersion='5.6.7'}
-##Requires -Modules @{ModuleName='Pester';RequiredVersion='4.3.1'}
 #Requires -Modules @{ModuleName='Pester';ModuleVersion='5.1.1'}
-#Requires -Modules @{ModuleName='ModuleBuilder';RequiredVersion='1.0.0'}
+
+##Requires -Modules @{ModuleName='ModuleBuilder';RequiredVersion='1.0.0'}
 
 param(
     $PesterOutput = 'Normal'
