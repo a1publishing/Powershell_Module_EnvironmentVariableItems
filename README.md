@@ -20,7 +20,7 @@ PS> Copy-Item -r C:\tmp\EnvironmentVariableItems $HOME\Documents\WindowsPowerShe
 or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/archive/master.zip) and install manually
 
 
-Test EnvironmentVariableItems, eg.;
+### Test EnvironmentVariableItems, eg.;
 ```
 PS> Import-Module EnvironmentVariableItems 
 PS> Get-EnvironmentVariableItems -Name PSModulePath
