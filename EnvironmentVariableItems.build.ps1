@@ -3,21 +3,6 @@
 #Requires -Modules @{ModuleName='Pester';ModuleVersion='5.1.1'}
 #Requires -Modules @{ModuleName='ModuleBuilder';RequiredVersion='1.0.0'}
 
-<#
-NOTES/TODO: 
-    - run with, eg., 
-        - test
-PS> Invoke-Build TestCode -File .\EnvironmentVariableItems.build.ps1 -PesterOutput Detailed        
-        - build
-PS> Invoke-Build -File .\EnvironmentVariableItems.build.ps1
-    - original code/guide sources
-        - https://www.pipehow.tech/new-plastermodule/
-        - https://github.com/PowerShellOrg/Plaster
-        - https://github.com/SimonWahlin/gyPSum
-    - updated to use Pester 5 (from 4)
-    - code coverage in TestBuild task not working for Pester 5 so commented out
-#>
-
 param(
     $PesterOutput = 'Normal'
 )
