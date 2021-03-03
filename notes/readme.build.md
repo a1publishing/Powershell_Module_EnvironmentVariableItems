@@ -4,8 +4,7 @@
 
 ### Invoke-Build additional parameter
 #### PesterOutput
-    - passed to Invoke-Pester Output parameter in build script
-    - eg.;
+Passed to Invoke-Pester Output parameter in build script, eg.;
 PS> 
 Invoke-Build TestCode -File .\EnvironmentVariableItems.build.ps1 -PesterOutput Detailed 
 
