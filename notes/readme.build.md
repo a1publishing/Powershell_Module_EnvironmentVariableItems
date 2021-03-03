@@ -31,4 +31,3 @@ https://github.com/SimonWahlin/gyPSum
 - updated to use Pester 5 (from 4)
 - code coverage in TestBuild task not working for Pester 5 so commented out
 
-#>
