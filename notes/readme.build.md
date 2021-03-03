@@ -24,7 +24,7 @@ Invoke-Build -File .\EnvironmentVariableItems.build.ps1
 
 
 ## NOTES/TODO: 
-- Original code/guide sources
+- Original code/guide sources  
 https://www.pipehow.tech/new-plastermodule/  
 https://github.com/PowerShellOrg/Plaster  
 https://github.com/SimonWahlin/gyPSum  
