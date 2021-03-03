@@ -23,8 +23,7 @@ or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_En
 ```
 PS>
 Expand-Archive $HOME\Downloads\Powershell_Module_EnvironmentVariableItems-master.zip C:\tmp
-New-Item $HOME\Documents\PowerShell\Modules\EnvironmentVariableItems -ItemType Directory
-Copy-Item C:\tmp\Powershell_Module_EnvironmentVariableItems-master\Source\EnvironmentVariableItems.* $HOME\Documents\PowerShell\Modules\EnvironmentVariableItems
+Copy-Item -r C:\tmp\Powershell_Module_EnvironmentVariableItems-master\bin\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules\
 ```
 
 ### Check for successful installation
