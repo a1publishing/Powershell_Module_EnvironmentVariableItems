@@ -20,11 +20,8 @@ Copy-Item -r C:\tmp\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
 ```
 
 or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/archive/master.zip) and install manually, eg.;
-...
-
+```
 PS>
-#New-Item C:\tmp\EnvironmentVariableItems -ItemType Directory
-#Set-Location C:\tmp\EnvironmentVariableItems
 Expand-Archive $HOME\Downloads\Powershell_Module_EnvironmentVariableItems-master.zip C:\tmp
 New-Item $HOME\Documents\PowerShell\Modules\EnvironmentVariableItems -ItemType Directory
 Copy-Item C:\tmp\Powershell_Module_EnvironmentVariableItems-master\Source\EnvironmentVariableItems.* $HOME\Documents\PowerShell\Modules\EnvironmentVariableItems
