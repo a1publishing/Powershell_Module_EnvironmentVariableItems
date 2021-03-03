@@ -7,26 +7,40 @@ Powershell module with commands to easily add or remove items from 'collection t
 
 a) install from PowershellGallery
 ```
-PS> Install-Module EnvironmentVariableItems
+PS> 
+Install-Module EnvironmentVariableItems
 ```
 
 or b) save from PowershellGallery and install manually, eg.;
 ```
-PS> Save-Module -Name EnvironmentVariableItems -Repository PSGallery -Path C:\tmp
-PS> $env:PSModulePath
-PS> Copy-Item -r C:\tmp\EnvironmentVariableItems $HOME\Documents\WindowsPowerShell\Modules
+PS> 
+Save-Module -Name EnvironmentVariableItems -Repository PSGallery -Path C:\tmp
+Copy-Item -r C:\tmp\EnvironmentVariableItems $HOME\Documents\PowerShell\Modules
+
 ```
 
-or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/archive/master.zip) and install manually
+or c) download from GitHub (https://github.com/a1publishing/Powershell_Module_EnvironmentVariableItems/archive/master.zip) and install manually, eg.;
+...
 
-
-### Test EnvironmentVariableItems, eg.;
+PS>
+#New-Item C:\tmp\EnvironmentVariableItems -ItemType Directory
+#Set-Location C:\tmp\EnvironmentVariableItems
+Expand-Archive $HOME\Downloads\Powershell_Module_EnvironmentVariableItems-master.zip C:\tmp
+New-Item $HOME\Documents\PowerShell\Modules\EnvironmentVariableItems -ItemType Directory
+Copy-Item C:\tmp\Powershell_Module_EnvironmentVariableItems-master\Source\EnvironmentVariableItems.* $HOME\Documents\PowerShell\Modules\EnvironmentVariableItems
 ```
-PS> Import-Module EnvironmentVariableItems 
-PS> Get-EnvironmentVariableItems -Name PSModulePath
+
+### Check for successful installation
 ```
+PS> 
+Get-Module EnvironmentVariableItems -ListAvailable
 
+    Directory: C:\Users\michaelf\Documents\PowerShell\Modules
 
+ModuleType Version    PreRelease Name                                PSEdition ExportedCommands
+---------- -------    ---------- ----                                --------- ----------------
+Script     2.1.0                 EnvironmentVariableItems            Desk
+```
 
 ## Usage
 
